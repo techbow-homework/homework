@@ -3,7 +3,7 @@ package com.techbow.homework.y2021.m09.yikegu;
 import java.util.Arrays;
 
 public class LC75 {
-    public static void sortColors(int[] nums) {
+    public static void sortColor(int[] nums) {
         if(nums == null || nums.length == 0) {
             return;
         }
@@ -33,7 +33,7 @@ public class LC75 {
 
     public static void main(String[] arg) {
         int[] test = new int[]{2,0,2,1,1,0};
-        sortColors(test);
+        sortColor(test);
         System.out.println(Arrays.toString(test));
 
     }
