@@ -12,7 +12,7 @@ public class LC_94 {
     private List<Integer> result = new ArrayList<>();
     public List<Integer> inorderTraversal(TreeNode root){
         inorderTraversalRecur(root);
-        return result
+        return result;
     }
     private void inorderTraversalRecur(TreeNode node) {
         if (node == null) return;
