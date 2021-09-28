@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m09.jiale;
+package com.techbow.homework.y2021.m09.jiale.leetcode;
 
 public class LC_278 {
     public int firstBadVersion(int n) {
