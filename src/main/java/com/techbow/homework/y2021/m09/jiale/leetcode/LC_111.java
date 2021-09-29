@@ -1,6 +1,6 @@
 package com.techbow.homework.y2021.m09.jiale.leetcode;
 
-import com.techbow.homework.y2021.m09.jiale.leetcode.common.TreeNode;
+import com.techbow.homework.y2021.m09.jiale.common.TreeNode;
 
 /**
  * min depth of bst

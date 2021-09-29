@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m09.jiale.leetcode.common;
+package com.techbow.homework.y2021.m09.jiale.common;
 
 /**
  * Definition for a binary tree node
