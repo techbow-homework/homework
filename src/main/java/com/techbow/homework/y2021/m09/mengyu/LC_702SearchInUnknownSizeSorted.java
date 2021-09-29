@@ -16,7 +16,7 @@ public class LC_702SearchInUnknownSizeSorted {
         //find the right boundary first
         while (target > reader.get(right)) {
             left = right;
-            right  = 2;
+            right  *= 2;
             //don't need to worry about out of bound
             //returns 231 - 1 if the i is out of the boundary of the array.
         }
