@@ -1,14 +1,14 @@
 package com.techbow.homework.y2021.m09.mengyu;
-
+/*
 public class LC_702SearchInUnknownSizeSorted {
     public int search(ArrayReader reader, int target) {
-        /*
+
         t = 13
          0 1 2 3 4  5
         -1 0 3 5 9 12
              l
                  r
-         */
+
         //unknown size, can't determine the right most pointer
         int left = 0;
         int right = 1;
@@ -35,3 +35,4 @@ public class LC_702SearchInUnknownSizeSorted {
     }
 }
 
+*/
