@@ -1,7 +1,7 @@
 #Written by Lianjiang He at 2021/10/01
 //Written by Lianjiang He at 2021/10/01
 算法入门1
-1 byte: boolean, byte,char(ASCII OR C++)
+1 byte: boolean, byte, char(ASCII OR C++)
 2 bytes: short(-2 to the power of 15 ~ 2 to the power of 15 -1)(-32768~32767), char(0 ~ 65535)
 4 bytes: int(-2^31 ~ 2^31-1),float(-2^128~2^128-1, 小数位：2^23 = 8388608，一共七位，这意味着最多能有7位有效数字，
 但绝对能保证的为6位，也即float的精度为6~7位有效数字)
