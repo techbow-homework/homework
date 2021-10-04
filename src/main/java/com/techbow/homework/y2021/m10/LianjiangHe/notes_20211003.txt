@@ -1,0 +1,12 @@
+//written by Lianjiang He at 2021/10/03
+算法入门03 Queue&Stack
+Object poll()delete 队首
+Object offer(Object element)insert 队尾
+Object peek()返回队首的元素
+boolean isEmpty()检查队列是否为空 true=empty
+heap delete
+      [i]
+[2*i+1] {2*i+2}
+getMin: array[0] //O(1)
+extractMin: swap O(1)+ remove O(1)+ heapify O(logN)
+
