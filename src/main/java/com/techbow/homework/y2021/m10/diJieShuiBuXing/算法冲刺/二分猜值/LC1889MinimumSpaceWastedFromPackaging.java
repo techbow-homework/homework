@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.diJieShuiBuXing;
+package com.techbow.homework.y2021.m10.diJieShuiBuXing.算法冲刺.二分猜值;
 
 
 import java.util.Arrays;
