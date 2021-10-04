@@ -16,6 +16,7 @@ import java.util.List;
           this.left = left;
           this.right = right;
       }
+
   }
 
 public class LC275BinaryTreePaths {
