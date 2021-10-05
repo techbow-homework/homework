@@ -9,4 +9,31 @@ heap delete
 [2*i+1] {2*i+2}
 getMin: array[0] //O(1)
 extractMin: swap O(1)+ remove O(1)+ heapify O(logN)
+HW: implement the function of heap
+privite void heapify(int i, int[] array, int size){
+int p = i;
+int l = 2*i +1;
+int r = 2*i +2;
+while(p<size){
+    int l = p*2+1,r=p*2+2;
+    int min =p;
+    if(l<size&& array[l]<array[p]){min = l;}//跟左边比
+    if(r<size&& array[r]<array[min]){min = r;}//右边跟最小的比
+    if(min!=p){
+    swap(array,p,min);
+    p=min;
+    }
+    else{break;}
+    }
+}
 
+buildHeapFromArray:
+O(N) time complexity?
+
+HW:
+public MinHeap(){}
+public MinHeap(int[] input){}
+public int getMin(){}
+public int extractMin(){}
+public void add(int val){}
+public int size(){}
