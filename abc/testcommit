@@ -1,0 +1,3 @@
+public int scoreAdd(int[]input){
+    return 0;
+    }
