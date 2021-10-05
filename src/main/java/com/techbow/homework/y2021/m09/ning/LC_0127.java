@@ -40,7 +40,7 @@ public class LC_0127 {
     // S2: two directions
 //    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
 //        if (beginWord == null || endWord == null || wordList == null) return -1;
-//        // deduplicate wordList
+//        // this step is to create a new dict to be able to remove visited ones
 //        HashSet<String> wordSet = new HashSet<>();
 //        for (String word : wordList) {
 //            wordSet.add(word);
