@@ -9,6 +9,7 @@ heap delete
 [2*i+1] {2*i+2}
 getMin: array[0] //O(1)
 extractMin: swap O(1)+ remove O(1)+ heapify O(logN)
+/* main
 HW: implement the function of heap
 privite void heapify(int i, int[] array, int size){
 int p = i;
@@ -37,3 +38,6 @@ public int getMin(){}
 public int extractMin(){}
 public void add(int val){}
 public int size(){}
+=======
+
+*/
