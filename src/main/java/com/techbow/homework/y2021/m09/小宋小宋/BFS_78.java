@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m09.boyuan.小宋小宋;
+package com.techbow.homework.y2021.m09.小宋小宋;
 
 public class BFS_78 {
     public List<List<Integer>> subsets(int[] nums) {
