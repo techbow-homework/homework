@@ -1,0 +1,43 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target){
+        Arrays.sort(nums);
+        return fourSumHelper(nums, target, 4, 0);
+    }
+
+    public List<List<Integer>> fourSumHelper(int[] nums, int target, int k, int start){
+        List<List<Integer>> res = new ArrayList<>();
+        if(k == 2){
+            int lefti = start;
+            int righti = nums.length - 1;
+            while(lefti < righti) {
+                if(nums[lefti] + nums[righti] == target){
+                    List<Integer> temp = new ArrayList<>();
+                    temp.add(nums[lefti]);
+                    temp.add(nums[righti]);
+                    res.add(temp);
+                    while(lefti < righti && nums[lefti] == nums[lefti + 1]) lefti++;
+                    while(lefti < righti && nums[righti] == nums[righti - 1]) righti--;
+                    lefti++;
+                    righti--;
+                }
+                else if(nums[lefti] + nums[righti] > target){
+                    righti--;
+                }
+                else{
+                    lefti++;
+                }
+            }
+        }
+        else{
+            for(int i = start; i < nums.length; i++) {
+                if(i != start && nums[i] == nums[i - 1]) continue;
+                List<List<Integer>> nextres = fourSumHelper(nums,target - nums[i], k - 1, i + 1);
+                for(List<Integer> list : nextres){
+                    list.add(0, nums[i]);
+                }
+                res.addAll(nextres);
+            }
+        }
+        return res;
+    }
+}
