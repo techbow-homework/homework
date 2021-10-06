@@ -1,4 +1,9 @@
 package com.techbow.homework.y2021.m10.qiangzhai;
+
+
+
+import com.techbow.homework.y2021.m09.boyuan.小宋小宋.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.HashMap;
@@ -6,7 +11,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+
 public class LC314_BinaryTreeVerticalLevelOrderTraversal {
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         //cc
