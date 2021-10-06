@@ -1,6 +1,6 @@
 package com.techbow.homework.y2021.m10.mengyu;
 
-public class LC2SwapNodesInPairs {
+public class LC25SwapNodesInPairs {
     public ListNode swapPairs(ListNode head) {
         /*
         cur = head;
@@ -25,6 +25,8 @@ public class LC2SwapNodesInPairs {
             cur2 = (cur1 != null) ? cur1.next : null;
             rest = (cur2 != null) ? cur2.next : null;
         } while (cur1 != null && cur1.next != null);
+
         return dummy.next;
+
     }
 }
