@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -36,4 +37,44 @@ class Solution {
         fast.next = head;
         return dummy.next;
     }
+=======
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        //corner case
+        if(head == null || head.next == null || k == 0) return head;
+        ListNode dummy = new ListNode();
+        ListNode slow = head, fast = head.next;
+        int count = 1;
+        while(fast!= null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            count++;
+        }
+        int total = fast == null? count * 2 -1: count * 2;
+        k %= total;
+        if(k == 0) return head;
+
+        slow = head;
+        int target = total - k;
+        for(int i = 1; i < target; i++){
+            slow = slow.next;
+        }
+        dummy.next = slow.next;
+        fast = slow.next;
+         slow.next = null;
+        while(fast.next != null) fast = fast.next;
+        fast.next = head;
+        return dummy.next;
+    }
+>>>>>>> e712b1360a2a1dfc15a458929f7f885292a30596
 }
