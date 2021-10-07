@@ -23,5 +23,7 @@
 hs_err_pid*
 
 .idea
-.DS_Store
+*.DS_Store
 target
+
+
