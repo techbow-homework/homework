@@ -1,0 +1,2 @@
+解题思路：
+可以将每一个nestedInteger看作一个结点，进行层级搜索。nestedInteger待实现.

@@ -1,0 +1,6 @@
+sid: 20210301
+date: 10/01/2021
+
+Techbow hw project description link: https://docs.google.com/document/d/1E-OuqDvlKeLTCWUvfRx8TTqcBtFPWFX9pY7m6KhZ5uE/edit
+vim tutorial:
+copy to clipboard: https://www.youtube.com/watch?v=tQCRVkSFFEc

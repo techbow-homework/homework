@@ -1,0 +1,8 @@
+Declaring a static variable in Java, means that there will be only one copy, no matter how many objects of the class are created.
+The variable will be accessible even with no Objects created at all.
+However, threads may have locally cached values of it.
+When a variable is volatile and not static, there will be one variable for each Object.
+So, on the surface it seems there is no difference from a normal variable but totally different from static.
+However, even with Object fields, a thread may cache a variable value locally.
+This means that if two threads update a variable of the same Object concurrently, and the variable is not declared volatile, there could be a case in which one of the thread has in cache an old value.
+Even if you access a static value through multiple threads, each thread can have its local cached copy! To avoid this you can declare the variable as static volatile and this will force the thread to read each time the global value.
