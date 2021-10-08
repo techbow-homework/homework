@@ -1,5 +1,7 @@
 package com.techbow.homework.y2021.m10.yijing;
 
+// 一斤🐑🐑🐑20200916
+
 public class progress {
     public static void main(String[] args) {
         System.out.println("我可以！我能行！ 我爱学习！坚持就是胜利！");
@@ -24,6 +26,12 @@ public class progress {
 
 // 10-06-2021
 // null
+
+// 10-07-2021
+// LC 662, 124
+// 算法陪练29直播
+
+
 
 
 
