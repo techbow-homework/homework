@@ -13,7 +13,7 @@ public class LC_01 {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement) && map.get(complement) != i) {
-                return new int[] { i, map.get(complement) };
+                return new int[]{i, map.get(complement)};
             }
         }
         // In case there is no solution, we'll just return null
