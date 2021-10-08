@@ -1,0 +1,9 @@
+<< left shift
+0010 --> 1000 because x << 2 (不会改变x本身的值)
+x = x << 2 or x <<= 2 (会改变x的值)
+>> right shift(带符号 除2 符号位是几就补几)
+1100 --> 1111
+>>> (无脑补0的right shift)
+1100 --> 0011
+Q Given an integer, write a function to determine if it is a power of two
+mod 2 不能有余数
