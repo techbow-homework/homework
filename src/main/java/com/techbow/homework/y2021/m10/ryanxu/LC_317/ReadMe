@@ -1,0 +1,4 @@
+解题思路：
+本题中有 "路障"，所以可以排出用数学公式解。求"The total travel distance is the sum of the distances between the houses of the friends and the meeting point."
+不妨在一个大小相同的网格中填写每个0到 一个"固定" 1的最短距离，有多少个1就重复多少次，并且把每次计算的结果累加到同一张表格中（注意在bfs的过程中，我们需要将不能到达的0标记为2，因为
+这些0是不符合题目要求的点），然后从scan整张表格找到最小距离。
