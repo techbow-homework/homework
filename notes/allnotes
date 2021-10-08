@@ -1,0 +1,5 @@
+git status --> means check what's change right here.
+git add
+git commit
+git pull --> sync
+git push --> upload your commit

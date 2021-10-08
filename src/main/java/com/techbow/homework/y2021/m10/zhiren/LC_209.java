@@ -23,6 +23,10 @@ public class LC_209 {
         int target = 7;
         int[] nums = new int[]{2,3,1,2,4,3};
 
+
         System.out.println(lc.minSubArrayLen(target,nums));
+
+        
+
     }
 }
