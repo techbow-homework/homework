@@ -1,5 +1,9 @@
-package LC;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /*  Author: Zhengshuang Ren
    Last Modified: 08/08/2018 9:35PM
    Comments & Bugs Report: zhengshuangren@gmail.com
