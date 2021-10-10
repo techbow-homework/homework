@@ -31,7 +31,7 @@ public class Level {
             return false;
         }
         for (ParkingSpot spot: spots){
-            if (spot.canPark(v) && spot.goPark(v)){
+            if (spot.goPark(v)){
                 return true;
             }
         }
@@ -46,4 +46,5 @@ public class Level {
         }
         return count;
     }
+
 }
