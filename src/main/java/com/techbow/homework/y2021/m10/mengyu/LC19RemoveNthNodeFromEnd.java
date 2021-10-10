@@ -1,6 +1,6 @@
 package com.techbow.homework.y2021.m10.mengyu;
 
-public class LC19RemoveNthNodeFromRight {
+public class LC19RemoveNthNodeFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         //TODO: corner cases
         int size = 0;

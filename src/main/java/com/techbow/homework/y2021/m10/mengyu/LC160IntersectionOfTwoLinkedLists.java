@@ -1,7 +1,7 @@
 package com.techbow.homework.y2021.m10.mengyu;
 
 public class LC160IntersectionOfTwoLinkedLists {
-        /*
+     /*
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         //two hashmaps
         Map<ListNode, Integer> checkIntersection = new HashMap<>();
