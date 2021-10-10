@@ -1,8 +1,5 @@
 package com.techbow.homework.y2021.m10.zhiren;
 
-import com.techbow.homework.y2021.m10.zekun.LC0039_DFS_CombinationSum;
-
-import java.util.List;
 
 public class LC_162 {
     public static void main(String[] args){
