@@ -1,0 +1,26 @@
+//注意k %= nums.length;
+//k可能大于nums长度！
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+        k %= nums.length;
+        rotateHelper(nums, 0, nums.length - 1);
+        rotateHelper(nums, 0, k - 1);
+        rotateHelper(nums, k, nums.length - 1);
+        return;
+    }
+
+    private void rotateHelper(int [] nums, int start, int end) {
+        //rotate from start to end
+        while (start < end) {
+            int temp = nums[end];
+            nums[end] = nums[start];
+            nums[start] = temp;
+            start++;
+            end--;
+        }
+        return;
+    }
+}
