@@ -23,6 +23,7 @@ public class Thing {
 
     public static void showInfo() {
         System.out.println(description);
+        //trying to test pull
         // Won't work: System.out.println(name);
     }
 }
