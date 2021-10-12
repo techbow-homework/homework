@@ -1,0 +1,35 @@
+class Solution {
+    private List<List<Integer>> res;
+    private Map<Integer, Integer> counter;
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        res = new ArrayList<>();
+        if(nums == null || nums.length == 0) return res;
+        counter = new HashMap<>();
+        int n = nums.length;
+        for(int num: nums){
+            counter.put(num, counter.getOrDefault(num, 0) + 1);
+        }
+        List<Integer> subRes = new ArrayList<>();
+        backtracking(n, 0, subRes);
+        return res;
+    }
+
+    public void backtracking(int n, int index, List<Integer> subRes){//for each position
+
+        //base case
+        if(index == n) {
+            res.add(new ArrayList<>(subRes));
+            return;
+        }
+
+        for(Map.Entry<Integer, Integer> entry : counter.entrySet()){
+            int count = entry.getValue();
+            if(count == 0) continue;
+            counter.put(entry.getKey(), count - 1);
+            subRes.add(entry.getKey());
+            backtracking(n, index + 1, subRes);
+            subRes.remove(subRes.size() - 1);
+            counter.put(entry.getKey(), count);
+        }
+    }
+}
