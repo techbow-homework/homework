@@ -1,0 +1,10 @@
+#Written by Lianjiang He at 2021/10/01
+//Written by Lianjiang He at 2021/10/01
+算法入门1
+1 byte: boolean, byte, char(ASCII OR C++)
+2 bytes: short(-2 to the power of 15 ~ 2 to the power of 15 -1)(-32768~32767), char(0 ~ 65535)
+4 bytes: int(-2^31 ~ 2^31-1),float(-2^128~2^128-1, 小数位：2^23 = 8388608，一共七位，这意味着最多能有7位有效数字，
+但绝对能保证的为6位，也即float的精度为6~7位有效数字)
+8 bytes: long, double
+float---第31位(占1bit)---第30-23位(占8bit-128)----第22-0位(占23bit)
+double--第63位(占1bit)---第62-52位(占11bit)---第51-0位(占52bit)

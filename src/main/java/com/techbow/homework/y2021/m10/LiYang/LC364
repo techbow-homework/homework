@@ -1,0 +1,31 @@
+class Solution {
+    private int maxDepth = 0;
+    public int depthSumInverse(List<NestedInteger> nestedList) {
+        if(nestedList == null) {
+            throw new IllegalArgumentException("input illegal");
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        NestedInteger root = new NestedInteger();
+        for(NestedInteger temp : nestedList){
+            root.add(temp);
+        }
+        dfs(root, map, 0);
+        int res = 0;
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            res = res + entry.getValue() * (maxDepth - entry.getKey() + 1);
+        }
+        return res;
+    }
+    private void dfs(NestedInteger root, Map<Integer, Integer> map, int level){
+        maxDepth = Math.max(maxDepth, level);
+        if(root.isInteger()){
+            int sum = map.getOrDefault(level, 0);
+            map.put(level, sum + root.getInteger());
+            return;
+        }
+        List<NestedInteger> list = root.getList();
+        for(NestedInteger temp : list){
+            dfs(temp, map, level + 1);
+        }
+    }
+}
