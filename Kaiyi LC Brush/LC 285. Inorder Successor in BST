@@ -1,0 +1,42 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        //corner case
+        if(root == null) return null;
+        TreeNode candidate = null;//can not give a magic number at the beginning.
+        while(root != null){
+            if(root.val <= p.val){
+                root = root.right;
+            }else{
+                candidate = root;
+                root = root.left;
+            }
+        }
+        return candidate;
+    }
+}
+/*class Solution {
+    TreeNode res = null;
+    boolean recordNext = false;
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        //base case;
+        if(root == null || res != null) return res;
+        inorderSuccessor(root.left, p);
+        if(recordNext && res == null) {
+            //recordNext = false;
+            res = root;
+            return res;
+        }
+        if(root == p) recordNext = true;
+        inorderSuccessor(root.right, p);
+        return res;
+    }
+}*/
