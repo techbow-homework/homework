@@ -1,6 +1,6 @@
 package com.techbow.homework.y2021.m10.mengyu;
 
-public class LC92reverseLinkedListByRange {
+public class LC92ReverseLinkedListByRange {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         //corner case
         if (head == null) {
