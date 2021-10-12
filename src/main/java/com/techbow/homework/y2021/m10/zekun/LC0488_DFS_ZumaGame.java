@@ -1,6 +1,8 @@
-package LC;
-import javax.swing.text.IconView;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LC0488_DFS_ZumaGame {
     private int min;
     public int findMinStep(String board, String hand) {

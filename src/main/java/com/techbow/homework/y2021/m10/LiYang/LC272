@@ -1,0 +1,35 @@
+//compare函数中传入参数类型要是Integer，不然报错
+class Solution {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        //c.c
+        Queue<Integer> heap = new PriorityQueue<>(new Comparator<Integer>(){
+            @Override
+            public int compare(Integer a, Integer b){
+                if(Math.abs(a - target) > Math.abs(b - target)){
+                   return -1;
+                } else if(Math.abs(a - target) < Math.abs(b - target)){
+                    return 1;
+                } else{
+                    return 0;
+                }
+            }
+        });
+        inOrder(root, heap, target, k);
+        List<Integer> res = new LinkedList<>();
+        if(heap.size() < k) return res;
+        while(!heap.isEmpty()){
+            res.add(heap.poll());
+        }
+        return res;
+    }
+    private void inOrder(TreeNode root, Queue<Integer> heap, double target, int k){
+        if(root == null) return;
+        inOrder(root.left, heap, target, k);
+        addToHeap(root.val, heap, k);
+        inOrder(root.right, heap, target, k);
+    }
+    private void addToHeap(int val, Queue<Integer> heap, int k){
+        heap.offer(val);
+        if(heap.size() > k) heap.poll();
+    }
+}
