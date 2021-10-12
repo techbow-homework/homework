@@ -1,5 +1,7 @@
-package LC;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class LC0200_BFS_NumIsland {
     private static final int[][] DIRECTIONS = {{1,0}, {-1, 0}, {0, 1}, {0, -1}};
