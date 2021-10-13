@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Card{
+class Card{
     private final int num;
     private final Suit suit;
 
@@ -23,7 +23,7 @@ public class Card{
     }
 }
 
-public enum Suit {
+enum Suit {
     CLUB,
     DIAMOND,
     HEART,

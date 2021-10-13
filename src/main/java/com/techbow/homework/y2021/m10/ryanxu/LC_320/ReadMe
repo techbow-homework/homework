@@ -1,0 +1,2 @@
+解题思路：
+All possible solution -> DFS。扫描input string每一个char，每个位置有两种选择，保留和变为数字。注意：便数字时的小细节。
