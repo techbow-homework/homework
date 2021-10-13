@@ -1,0 +1,23 @@
+class Solution {
+    private List<List<Integer>> res;
+    private int n;
+    public List<List<Integer>> combine(int n, int k) {
+        res = new ArrayList<>();
+        this.n = n;
+        List<Integer> subRes = new ArrayList<>();
+        DFS(1, k, subRes);
+        return res;
+    }
+
+    public void DFS(int index, int k, List<Integer> subRes){
+        if(k == 0){
+            res.add(new ArrayList<>(subRes));
+        }
+        if(index > n) return;
+        for(int i = index; i <= n - k + 1; i++){
+            subRes.add(i);
+            DFS(i + 1, k - 1, subRes);
+            subRes.remove(subRes.size() - 1);
+        }
+    }
+}

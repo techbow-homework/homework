@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {//two hash maps, one to count the anagram, one to count the sliding window. use .equals to compare two hashmaps, can use two arrays to improve
+        //time complexity O(Np + Ns), space O(1) cause it contains no more than 26 elements for each hashmap!!1
+        List<Integer> res = new ArrayList<>();
+        //corner case
+        if(p.length() > s.length()) return res;
+
+        int n = p.length();
+        Map<Character, Integer> sCount = new HashMap<>();
+        Map<Character, Integer> pCount = new HashMap<>();
+        for(int i = 0; i < n; i++){
+            char pCurr = p.charAt(i);
+            pCount.put(pCurr, pCount.getOrDefault(pCurr, 0) + 1);
+        }
+
+        for(int i = 0; i < s.length(); i++){
+            char sCurr = s.charAt(i);
+            sCount.put(sCurr, sCount.getOrDefault(sCurr, 0) + 1);
+            if(i - n >= 0){
+                char sPrev = s.charAt(i - n);
+                sCount.put(sPrev, sCount.get(sPrev) - 1);
+                if(sCount.get(sPrev) == 0) sCount.remove(sPrev);
+            }
+            if(sCount.equals(pCount)) res.add(i - n  + 1);
+        }
+        return res;
+    }
+}

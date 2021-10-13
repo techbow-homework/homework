@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0079_DFS_WordSearch {
     public boolean exist(char[][] board, String word) {

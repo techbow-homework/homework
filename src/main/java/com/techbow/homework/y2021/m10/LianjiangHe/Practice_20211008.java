@@ -9,6 +9,7 @@ public class Practice_20211008 {
 //        静态变量优先于其他的对象，随Class加载而加载，不用创建对象就能访问
 //       private通过构造方法+private，可以直接使用静态方法，减少代码量，增加可读性
 //       privacy+static/()+return value type + method name(input type input value)
+        //
     }
 }
 

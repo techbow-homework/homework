@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0101_DFS_SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
