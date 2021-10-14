@@ -1,0 +1,21 @@
+class Solution {
+    private HashMap<Integer, Integer> memo;//maps target and its number of ways to get there
+    public int combinationSum4(int[] nums, int target) {//need to use memoization to dynamic program the question
+        //corner case
+        if(nums == null || nums.length == 0 || target == 0) return 0;
+        memo = new HashMap<>();
+        return helper(nums, target);
+    }
+
+    public int helper(int[] nums, int target){
+        //base case
+        if(target == 0) return 1;
+        if(memo.containsKey(target)) return memo.get(target);
+        int count = 0;
+        for(int num : nums){
+            if(target - num >= 0) count += helper(nums, target - num);
+        }
+        memo.put(target, count);
+        return count;
+    }
+}
