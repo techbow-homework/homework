@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0074_BniaryS_Search2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {

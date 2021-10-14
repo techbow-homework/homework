@@ -1,0 +1,22 @@
+class Solution {
+    private List<List<Integer>> res;
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        res = new ArrayList<>();
+        Arrays.sort(candidates);
+        backtracking(candidates, target, 0, new ArrayList<>());
+        return res;
+    }
+
+    public void backtracking(int[] candidates, int target, int index, List<Integer> sublist){
+        if(target < 0) return;
+        if(target == 0) {
+            res.add(new ArrayList<>(sublist));// here is the way to add arraylist into an ArrayList of Arraylist
+            return;
+        }
+        for(int i = index; i < candidates.length; i++){
+            sublist.add(candidates[i]);
+            backtracking(candidates, target - candidates[i], i, sublist);// here is i for index to update!
+            sublist.remove(sublist.size() - 1);//this is the backtracking part
+        }
+    }
+}

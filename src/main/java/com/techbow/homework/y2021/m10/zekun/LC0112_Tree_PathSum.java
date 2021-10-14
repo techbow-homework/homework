@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0112_Tree_PathSum {
     public boolean hasPathSum(TreeNode root, int targetSum) {
