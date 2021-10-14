@@ -1,0 +1,28 @@
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {//keep a decending deque that keeps index, when a new num is offered in, poll out all the number that is smaller than it and then offered in. when a number leave the window, if it is the same as the leftmost number, delete the left num
+        //corner case
+        int n = nums.length;
+        int[] res = new int[n - k + 1];
+        if(nums == null || n < k) return res;
+
+        Deque<Integer> dq = new LinkedList<Integer>();
+        int ri = 0;
+        for(int i = 0; i < n; i++){
+            //poll out all the elements on the left that is not in the window anymore
+            while(!dq.isEmpty() && dq.peek() < i - k + 1){
+                dq.poll();
+            }
+
+            //for the new element poll out all the elements on the right that is smaller than the new element
+            while(!dq.isEmpty() && nums[dq.peekLast()] <nums[i]){
+                dq.pollLast();
+            }
+
+            dq.offer(i);
+            if(i >= k - 1){//prevent the first k
+                res[ri++] = nums[dq.peek()];
+            }
+        }
+        return res;
+    }
+}
