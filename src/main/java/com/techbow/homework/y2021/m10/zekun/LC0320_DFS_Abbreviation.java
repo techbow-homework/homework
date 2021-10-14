@@ -1,5 +1,8 @@
-package LC;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LC0320_DFS_Abbreviation {
     public List<String> generateAbbreviations(String word) {
         List<String> res = new ArrayList<>();
