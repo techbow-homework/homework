@@ -1,0 +1,3 @@
+解题思路：
+all possible solution问题优先考虑dfs解法，valid IP 0～255，011是invalid，所以可以从左往右扫input string,每个idx位置可以有三个分叉，
+分别是长度为1，2，3的数字,对这三个数字分别进行dfs。当前数字是0时，需要直接break当前分叉，右移idx一位。

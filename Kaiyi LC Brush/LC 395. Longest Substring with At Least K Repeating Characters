@@ -1,0 +1,25 @@
+class Solution {
+    public int longestSubstring(String s, int k) {//use divide and conquer, for each resursion count each of the letter with an array.
+        return helper(s, k, 0, s.length() - 1);
+    }
+
+    public int helper(String s, int k, int left, int right){
+        //base case
+        if(right - left + 1 <k) return 0;
+        int[] count = new int[26];
+        for(int i = left; i <= right; i++){
+            count[s.charAt(i) - 'a']++;
+        }
+
+        int mid = left;
+        while(mid <= right){
+            if(count[s.charAt(mid) - 'a'] < k){
+                int midright = mid + 1;
+                while(midright < right && count[s.charAt(midright) - 'a'] < k) midright++;
+                return Math.max(helper(s, k, left, mid - 1), helper(s, k, midright, right));//notice have to use mid - 1 here cause mid is not a valid index and need to be discarded
+            }
+            mid++;
+        }
+        return right - left  + 1;
+    }
+}

@@ -7,7 +7,6 @@ public class Practice_20211011 {
         A a = new B();//A范围大B小,A参数少,B参数多.所以A可以通过B方法新建对象,而B不能通过A新建对象,无法从A中找到必要的
         a.method1();
         // B b2 = new A();
-
     }
 }
 
@@ -24,3 +23,4 @@ class B extends A {
         System.out.println("hello");
     }
 }
+
