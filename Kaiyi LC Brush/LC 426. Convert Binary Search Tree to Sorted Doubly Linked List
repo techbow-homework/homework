@@ -1,0 +1,72 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val,Node _left,Node _right) {
+        val = _val;
+        left = _left;
+        right = _right;
+    }
+};
+*/
+
+class Solution {
+    Node prev = null;
+    Node head = null;
+    public Node treeToDoublyList(Node root) {//inorder traversal(left, root, right) and keep pointers at previous node
+        //corner case, when loop to the null
+        if(root == null) return root;
+        //find the head
+        Node curr = root;
+        while(curr.left != null) curr = curr.left;
+        head = curr;
+
+        helper(root);
+        prev.right = head;
+        head.left = prev;
+        return head;
+    }
+
+    public void helper(Node root){
+        //base case
+        if(root == null) return;
+        helper(root.left);
+        if(prev != null) prev.right = root;
+        root.left = prev;
+        prev = root;
+        helper(root.right);
+    }
+    /*Node dummy;
+    Node curr;
+    public Node treeToDoublyList(Node root) {//solution with extra space
+        //corner case
+        if(root == null) return root;
+        dummy = new Node();
+        curr = dummy;
+        helper(root);
+        dummy = dummy.right;
+        dummy.left = curr;
+        curr.right = dummy;
+        return dummy;
+    }
+
+    public void helper(Node root){
+        //base case
+        if(root == null) return;
+        helper(root.left);
+        Node newNode = new Node(root.val);
+        curr.right =newNode;
+        newNode.left = curr;
+        curr = curr.right;
+        helper(root.right);
+    }*/
+}

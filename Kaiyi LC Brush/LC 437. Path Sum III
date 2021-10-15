@@ -1,0 +1,46 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int count = 0;
+    public int pathSum(TreeNode root, int targetSum) {//Pass up a list of previously added results
+        //corner case
+        List<Integer> subSums = new ArrayList<>();
+        helper(root, targetSum, subSums);
+        return count;
+    }
+
+    public List<Integer> helper(TreeNode root, int targetSum, List<Integer> subSums){
+        //base case
+        if(root == null) return subSums;
+        //check validity of root val;
+        if(root.val == targetSum) count++;
+        //recursion to leaf node then add to subSum
+        List<Integer> leftTree = new ArrayList<>(helper(root.left, targetSum, subSums));
+        List<Integer> rightTree = new ArrayList<>(helper(root.right, targetSum, subSums));
+        List<Integer> totalTree = new ArrayList<>();
+        totalTree.addAll(leftTree);
+        totalTree.addAll(rightTree);
+        for(int i = 0 ; i <totalTree.size(); i++){
+            int currNum=  totalTree.get(i) + root.val;
+            if(currNum == targetSum) {
+                count++;
+            }
+            totalTree.set(i, currNum);
+        }
+        totalTree.add(root.val);
+        return totalTree;
+    }
+}
