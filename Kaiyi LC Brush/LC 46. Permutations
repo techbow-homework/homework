@@ -1,0 +1,62 @@
+class Solution {
+    /*private List<List<Integer>> res;
+    private int[] nums;
+    public List<List<Integer>> permute(int[] nums) {
+        res = new ArrayList<>();
+        //corner case
+        if(nums == null || nums.length == 0) return res;
+        HashSet<Integer> set = new HashSet<>();
+        this.nums = nums;
+        List<Integer> subRes = new ArrayList<>();
+        DFS(set, subRes, nums.length);
+        return res;
+    }
+
+    public void DFS(HashSet<Integer> set, List<Integer> subRes, int count){
+        //base case
+        if(count == 0){
+            res.add(new ArrayList<>(subRes));
+            return;
+        }
+
+        for(int i = 0 ; i < nums.length; i++){
+            if(!set.contains(nums[i])){
+                subRes.add(nums[i]);
+                set.add(nums[i]);
+                DFS(set, subRes, count - 1);
+                set.remove(nums[i]);
+                subRes.remove(subRes.size() - 1);
+            }
+        }
+        return;
+    }*/
+
+    private List<List<Integer>> res;
+    private int n;
+    public List<List<Integer>> permute(int[] nums) {//Time complexity n!
+        res = new ArrayList<>();
+        //corner case
+        if(nums == null || nums.length == 0) return res;
+        n = nums.length;
+        List<Integer> subRes = new ArrayList<>();
+        for(int num: nums) subRes.add(num);// use this arraylist to do the swaping
+        swapBacktrack(subRes, 0);
+        return res;
+    }
+
+    public void swapBacktrack(List<Integer> subRes, int first){
+        //base case
+        if(first == n){
+            res.add(new ArrayList<>(subRes));
+            return;
+        }
+
+        for(int i = first ; i < n; i++){
+            Collections.swap(subRes, first, i);
+            swapBacktrack(subRes, first + 1);
+            Collections.swap(subRes, first, i);
+        }
+
+        return;
+    }
+}

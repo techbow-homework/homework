@@ -19,6 +19,8 @@ public class LC442FindAllDuplicatesInAnArray {
 
     public static void main(String[] args) {
         int[] nums = new int[]{4,3,2,7,8,2,3,1};
-        System.out.println(findDuplicates(nums).toString());
+        System.out.println(findDuplicates(nums).toString()); // [2,3]
+        Double t1 = null;
+        System.out.println(t1 == null);
     }
 }

@@ -1,0 +1,84 @@
+//使用的是DFS加pruning的解法
+//1. pruning是查表和填表，查的是当前的搜索状态在历史上是否已经有结果； 填的是当前搜索状态下的结果，这里一定要注意，当前搜索状态对应的是本次dfs的index 和 steps；
+//2. 两种分叉的写法：从跳法去验证position是否合法；从合法的position去验证是否是valid跳法； 可以从搜索状态去看哪种更好写；
+//////////////////////////写法1
+class Solution {
+    public boolean canCross(int[] stones) {
+        if(stones == null || stones.length == 0) return false;
+        Map<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Boolean>[] memo = new HashMap[stones.length];//<steps, boolean>
+        for(int i =0; i < stones.length; i++){
+            map.put(stones[i], i);
+        }
+        return canCross(stones, 0, 0, map, memo);
+    }
+
+    private Boolean canCross(int[] stones, int index, int steps, Map<Integer, Integer> map, HashMap<Integer, Boolean>[] memo){
+            if(index == stones.length - 1) return true;
+            if(memo[index] != null && memo[index].containsKey(steps)){
+                return memo[index].get(steps);
+            }
+            if(memo[index] == null){
+                    memo[index] = new HashMap<Integer, Boolean>();
+            }
+
+            //case1, jump k-1;
+            int nextStone1 = stones[index] + steps - 1;
+            if(nextStone1 != stones[index] && map.containsKey(nextStone1)){
+                boolean stone1Jump = canCross(stones, map.get(nextStone1), steps - 1, map, memo);
+                memo[index].put(steps, stone1Jump);
+                if(stone1Jump) return true;
+            }
+
+            //case2, jump k;
+
+            int nextStone2 = stones[index] + steps;
+            if(nextStone2 != stones[index] && map.containsKey(nextStone2)){
+                boolean stone2Jump = canCross(stones, map.get(nextStone2), steps, map, memo);
+                memo[index].put(steps, stone2Jump);
+                if(stone2Jump) return true;
+            }
+
+            //case3, jump k+1;
+            int nextStone3 = stones[index] + steps + 1;
+            if(nextStone3 != stones[index] && map.containsKey(nextStone3)){
+                boolean stone3Jump = canCross(stones, map.get(nextStone3), steps + 1, map, memo);
+                memo[index].put(steps, stone3Jump);
+                if(stone3Jump) return true;
+            }
+
+            memo[index].put(steps, false);
+            return false;
+        }
+    }
+}
+////////////////////写法2
+class Solution {
+    public boolean canCross(int[] stones) {
+        if(stones == null || stones.length == 0) return false;
+        HashMap<Integer, Boolean>[] mem = new HashMap[stones.length];//<steps, boolean>
+        for(int i = 0; i < stones.length; i++){
+            mem[i] = new HashMap<Integer, Boolean>();
+        }
+        return search(stones, 0, 0, mem);
+    }
+
+    private boolean search(int[] stones, int idx, int k, HashMap<Integer, Boolean>[] mem){
+        HashMap<Integer,Boolean> map = mem[idx];
+        if(map.containsKey(k)) return map.get(k);
+        int len = stones.length;
+        if(idx == len - 1) return true;
+        for(int i = idx + 1; i < len; i++){
+            int dis = stones[i] - stones[idx];
+            if(dis < k - 1) continue;
+            if(dis > k + 1) break;
+            if(dis == k - 1 || dis == k || dis == k + 1){
+                if(search(stones, i, dis, mem)){
+                    map.put(k, true);
+                    return true;
+                }
+            }
+        }
+        map.put(k, false);
+        return false;
+    }
