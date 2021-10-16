@@ -1,0 +1,3 @@
+解题思路：
+典型的DFS搜做题，首先考虑input string的切分，其次是对dictionary的优化。发现dfs辅助函数的输出为boolean，并且参数只有一个int作为变量，可以
+考虑用memo进行优化。再另一版本可能考虑更快的 dictionary 优化 -- Trie.
