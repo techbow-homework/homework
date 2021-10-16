@@ -1,0 +1,21 @@
+class Solution {
+    public int numDecodings(String s) {
+        //corner case
+        if(s == null || s.length() == 0 || s.charAt(0) == '0') return 0;
+        int[] dp = new int[s.length()  + 1];
+        dp[0] = 1;
+        dp[1] = 1;//corner case has been checked
+
+        //in total two cases need to be considered in this dp
+        for(int i = 1; i < s.length(); i++){
+            if(s.charAt(i) != '0'){
+                dp[i + 1] = dp[i];
+            }
+            int twoDigit = Integer.parseInt(s.substring(i-1, i + 1));
+            if(twoDigit >= 10 && twoDigit <= 26){//when it is smaller than 10, it is the case of 0X, which is not valid
+                dp[i + 1] += dp[i - 1];
+            }
+        }
+        return dp[s.length()];
+    }
+}
