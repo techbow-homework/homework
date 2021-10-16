@@ -32,4 +32,4 @@ public class Maximumearining {
         return dp.get(left)[0]<= t? left: left-1;
     }
 }
-}
+
