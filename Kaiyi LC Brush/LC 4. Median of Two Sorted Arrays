@@ -1,0 +1,33 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        //binary search in two arrays
+        int len1 = nums1.length, len2 = nums2.length;
+
+        int midLeft = (len1 + len2 - 1)/ 2;
+        int midRight = (len1 + len2)/ 2;
+        double left = finder(nums1, 0, nums2, 0, midLeft + 1);
+        if(midLeft == midRight) return left;
+        else{
+            double right = finder(nums1, 0, nums2, 0, midRight + 1);
+            return (left + right)/2;
+        }
+    }
+
+    public double finder(int[] nums1, int index1, int[] nums2, int index2, int k) {// k is number of element left need to find, 1-based, index1 and index2 are exclusive , for each loop decrease k /2
+        //base case
+        if(index1 >= nums1.length) return nums2[index2 + k - 1];//means all the rest k comes from nums2, need to minus 1 cause k is 1 based
+        if(index2 >= nums2.length) return nums1[index1 + k - 1];;
+        if(k == 1) return Math.min(nums1[index1], nums2[index2]);
+
+        //default mid1 and mid2 value to prevent non-exisiting case
+        int mid1 = Integer.MAX_VALUE, mid2  =Integer.MAX_VALUE;
+        if(index1 + k/2 - 1 < nums1.length) mid1 = nums1[index1 + k/2 - 1];
+        if(index2 + k/2 - 1 < nums2.length) mid2 = nums2[index2 + k/2 - 1];// the reason for -1 is the same as above, cause k is one based,
+
+        if(mid1 <= mid2){
+            return finder(nums1, index1 + k/2 , nums2, index2, k - k/2);
+        }else{
+            return finder(nums1, index1 , nums2, index2 + k/2, k - k/2);
+        }
+    }
+}

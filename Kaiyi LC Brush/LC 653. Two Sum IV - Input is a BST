@@ -1,0 +1,28 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {//inorder to straight BST and search in an increasng array
+    HashSet<Integer> set = new HashSet<>();
+    public boolean findTarget(TreeNode root, int k) {//BST does not allow duplicates
+        //corner case
+        if(root == null) return false;
+        int complement = k - root.val;
+        if(set.contains(complement)) return true;
+        set.add(root.val);
+
+        return findTarget(root.left, k) || findTarget(root.right, k);
+    }
+
+}

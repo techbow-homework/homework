@@ -1,0 +1,43 @@
+/*class Solution {
+    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+        HashMap<Integer, Integer> map1 = new HashMap<>();
+        for(int a: nums1){
+            for(int b : nums2){
+                map1.put(a+b, map1.getOrDefault(a+b, 0) + 1);
+            }
+        }
+        int count = 0;
+        for(int c: nums3){
+            for(int d : nums4){
+                int target = -c-d;
+                count += map1.getOrDefault(target, 0);
+            }
+        }
+        return count;
+    }
+}*/
+class Solution {
+        public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+            return kSumCount(new int[][]{A, B, C, D});
+        }
+        public int kSumCount(int[][] lists) {
+            Map<Integer, Integer> m = new HashMap<>();
+            addToHash(lists, m, 0, 0);
+            return countComplements(lists, m, lists.length / 2, 0);
+        }
+        void addToHash(int[][] lists, Map<Integer, Integer> m, int i, int sum) {//half of the list is added into the map
+            if (i == lists.length / 2)
+                m.put(sum, m.getOrDefault(sum, 0) + 1);
+            else
+                for (int a : lists[i])
+                    addToHash(lists, m, i + 1, sum + a);
+        }
+        int countComplements(int[][] lists, Map<Integer, Integer> m, int i, int complement) {//the other half of the list is used to loop to find the complement.
+            if (i == lists.length)
+                return m.getOrDefault(complement, 0);
+            int cnt = 0;
+            for (int a : lists[i])
+                cnt += countComplements(lists, m, i + 1, complement - a);
+            return cnt;
+        }
+    }

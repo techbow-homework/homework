@@ -1,0 +1,20 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {//hashmap one pass, find complement of nums[i]
+        int[] result = new int[]{-1, -1};
+        //corner  case
+        if(nums.length < 2) return result;
+
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();//map number with its index
+        for(int i = 0; i < nums.length; i++){
+            int complement = target - nums[i];
+            if(map.containsKey(complement)){
+                result[0] = i;
+                result[1] = map.get(complement);
+                return result;
+            }else{
+                map.put(nums[i], i);
+            }
+        }
+        return result;
+    }
+}
