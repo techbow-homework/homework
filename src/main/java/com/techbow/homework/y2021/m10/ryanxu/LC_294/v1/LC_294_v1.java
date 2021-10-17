@@ -1,8 +1,8 @@
-package com.techbow.homework.y2021.m10.ryanxu.LC_294;
+package com.techbow.homework.y2021.m10.ryanxu.LC_294.v1;
 
 import java.util.HashMap;
 
-public class LC_294 {
+public class LC_294_v1 {
     public boolean canWin(String s) {
 
         if (s == null) {
@@ -39,7 +39,7 @@ public class LC_294 {
     }
 
     public static void main(String[] args) {
-        LC_294 lc_294 = new LC_294();
+        LC_294_v1 lc_294 = new LC_294_v1();
         String s = "++++";
         System.out.println(lc_294.canWin(s));
     }
