@@ -1,6 +1,6 @@
 package com.techbow.homework.y2021.m10.mingyu;
 
-public class LC_33 {
+public class LC33 {
     int [] nums;
     int target;
     public int FindRotateIndex(int left, int right){
