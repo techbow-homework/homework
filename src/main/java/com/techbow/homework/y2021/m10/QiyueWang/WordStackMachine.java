@@ -49,7 +49,7 @@ public class WordStackMachine {
 
     public static void main(String[] args) {
         String S = "4 5 6 - 7 +";
-
+        System.out.println(solution(S));//8
     }
 
 
