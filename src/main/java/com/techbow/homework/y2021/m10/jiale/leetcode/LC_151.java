@@ -18,6 +18,6 @@ public class LC_151 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new LC_151().reverseWords("the sky is blue"));
+        System.out.println(new LC_151().reverseWords("a good   example"));
     }
 }
