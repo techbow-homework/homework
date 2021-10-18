@@ -1,0 +1,24 @@
+class Solution {
+    /*public int trailingZeroes(int n) {//property from 0 to n, nuumber of 5 factorial is always more than that of 2. so count the number of 5 factor// O(N)
+        int clean  = n - n %5;
+        int counter = 0;
+        while(clean > 0){
+            int dup = clean;
+            while(dup != 0 && dup%5 == 0){
+                dup /= 5;
+                counter++;
+            }
+            clean -= 5;
+        }
+        return counter;
+    }*/
+    public int trailingZeroes(int n) {
+        //O(logn) find number of factor 5.
+        int counter = 0;
+        while(n >0){
+            n /= 5;//this means n/5 numbers is multiple of 5 within the range of 0  to n
+            counter += n;
+        }
+        return counter;
+    }
+}

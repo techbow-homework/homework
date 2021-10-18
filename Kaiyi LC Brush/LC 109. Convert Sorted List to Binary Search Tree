@@ -1,0 +1,47 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {//going through the listnode is just like in order traversal and can use this property to go through the TreeNode and ListNode at the same time!
+        //base case
+        if(head == null) return null;
+        //base case for single node here?
+        if(head.next == null) return new TreeNode(head.val);
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode midPrev = dummy;
+        ListNode end = head;
+        while(end != null && end.next != null){
+            midPrev = midPrev.next;
+            end = end.next.next;
+        }
+        ListNode rootL = midPrev.next;
+        TreeNode root = new TreeNode(rootL.val);
+        midPrev.next = null;
+        root.left = sortedListToBST(head);
+        root.right = sortedListToBST(rootL.next);
+        return root;
+    }
+}

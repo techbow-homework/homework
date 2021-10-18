@@ -1,0 +1,25 @@
+class Solution {
+   /* public int singleNumber(int[] nums) {
+        //solution 1, hashSet to count and find the single number, two pass, o(n) space
+        HashSet<Integer> set = new HashSet<>();
+        long sumSet = 0, sumArray = 0;
+        for(int num: nums){
+            sumArray += num;
+            set.add(num);
+        }
+        for(int setNum: set){
+            sumSet += setNum;
+        }
+        return (int)((sumSet * 3 - sumArray)/2);//need to have everything inside the bracket.
+    }*/
+    public int singleNumber(int[] nums) {
+        //solution 2: bitmask, there are seen once. twice and the thrid time the number will be wiped out in both seen_once and seen_twice
+        int seen_once = 0;
+        int seen_twice = 0;
+        for(int num: nums){
+            seen_once = ~seen_twice &(seen_once ^ num);//see this as two parts seperate by &, first part has n-1 x, second part has n x
+            seen_twice = ~seen_once &(seen_twice ^ num);
+        }
+        return seen_once;
+    }
+}
