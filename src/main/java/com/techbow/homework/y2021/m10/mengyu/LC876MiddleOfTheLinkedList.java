@@ -1,5 +1,7 @@
 package com.techbow.homework.y2021.m10.mengyu;
 
+import java.util.ArrayList;
+
 public class LC876MiddleOfTheLinkedList {
     public ListNode middleNode(ListNode head) {
         ListNode fast = head, slow = head;
