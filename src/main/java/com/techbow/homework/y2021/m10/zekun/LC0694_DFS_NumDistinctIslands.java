@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0694_DFS_NumDistinctIslands {
     private static final int[][] DIRECTIONS = {{1, 0}, {-1,0}, {0, 1}, {0, -1}};

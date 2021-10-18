@@ -1,0 +1,2 @@
+解题思路：
+All possible solution -> DFS。标准的dfs，wordDict是List<String>，可能可以使用Trie来优化搜索速度。这里先使用HashSet.

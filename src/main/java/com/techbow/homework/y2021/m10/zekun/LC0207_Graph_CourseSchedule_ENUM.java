@@ -1,5 +1,8 @@
-package LC;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LC0207_Graph_CourseSchedule_ENUM {
     public static void main(String[] args){
         LC0207_Graph_CourseSchedule_ENUM obj = new LC0207_Graph_CourseSchedule_ENUM();

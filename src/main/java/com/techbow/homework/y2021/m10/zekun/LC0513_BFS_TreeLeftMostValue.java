@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 import java.util.LinkedList;
 import java.util.Queue;

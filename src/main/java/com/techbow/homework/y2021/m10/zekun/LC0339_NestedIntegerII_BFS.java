@@ -1,5 +1,8 @@
-package LC;
-import java.util.*;
+package com.techbow.homework.y2021.m10.zekun;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class LC0339_NestedIntegerII_BFS {
     public int depthSumInverse(List<NestedInteger> nestedList) {

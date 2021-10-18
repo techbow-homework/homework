@@ -1,0 +1,18 @@
+//多叉树，找给定两个node的LCA
+//假设tree node的fields是一个list<TreeNode> children, list里存的是它的children
+public TreeNode lcaOfTwoNodesInMultiBranchTree(TreeNode root, TreeNode p, TreeNode q){
+    if(root == null || root == p || root == q ) return root;
+    if(root.children == null || root.children.size() == 0) return null;
+    int count = 0;
+    TreeNode temp = null;
+    for(TreeNode node : root.children){
+        TreeNode returnNode = lcaOfTwoNodesInMultiBranchTree(temp, p, q);
+        if(returnNode != null){
+            count++;
+            temp = returnNode;
+        }
+        if(count == 2) return root;
+    }
+    if(count == 1) return temp;
+    return null;
+}

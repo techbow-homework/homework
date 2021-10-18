@@ -1,0 +1,31 @@
+2021-10-16 算法加强 BFS
+搜索问题的特点 : 分叉。-> tree, graph, BFS, DFS。
+
+BFS(宽度优先搜索) level by level （同层先走）
+
+        root
+       /    \
+      5      6
+     / \    / \
+    8   7  4   2
+搜索顺序 : root, 5, 6, 8, 7, 4, 2
+1.level-order traverse
+2.最短距离 边的权值(weight)相同
+第一次见到即最短 constant/factor 更少， 但 big-o 一样
+3.定长路径
+
+When to add visited?
+graph 要加， tree 不加
+
+Why add visited?
+避免同一点进 Queue 两次
+
+入度值 ：指向这个点的边的个数
+
+二维变一维                            一维变二维
+0, 1, 2                              4 -> i = 4 / col
+3, 4, 5 (2x3 matrix)                      j = 4 % col -> [1,1]
+i * col + j
+[0,2] -> 0 * 3 + 2 = 2
+[1,2] -> 1 * 3 + 2 = 5
+
