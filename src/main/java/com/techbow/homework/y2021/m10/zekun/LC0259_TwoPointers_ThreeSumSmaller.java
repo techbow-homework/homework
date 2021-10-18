@@ -1,6 +1,8 @@
 package com.techbow.homework.y2021.m10.zekun;
 
-public class LC0259_SlidingWindow_ThreeSumSmaller {
+import java.util.Arrays;
+
+public class LC0259_TwoPointers_ThreeSumSmaller {
     public int threeSumSmaller(int[] nums, int target) {
         //cc
         if(nums == null || nums.length == 0) return 0;
