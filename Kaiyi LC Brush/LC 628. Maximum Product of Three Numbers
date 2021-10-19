@@ -1,0 +1,25 @@
+class Solution {
+    public int maximumProduct(int[] nums) {//use maxheap of size two and minHeap of size 3 to check the smallest two and biggest three
+        //corner case
+        if(nums.length == 3) return nums[0] * nums[1]* nums[2];
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(3);//minHeap store the top three num
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(2, (a, b) -> b - a);//minHeap store the bottom two num
+        for(int num: nums){
+            if(minHeap.size() < 3 || minHeap.peek() < num){
+                if(minHeap.size() == 3) minHeap.poll();
+                minHeap.offer(num);
+            }
+
+            if(maxHeap.size() < 2 || maxHeap.peek() > num){
+                if(maxHeap.size() == 2) maxHeap.poll();
+                maxHeap.offer(num);
+            }
+        }
+        int minTwo = maxHeap.poll() * maxHeap.poll();
+        int maxMinTwo = minHeap.poll()*minHeap.poll();
+        int max = minHeap.poll();
+
+        return Math.max(max * minTwo, max*maxMinTwo);
+    }
+}
