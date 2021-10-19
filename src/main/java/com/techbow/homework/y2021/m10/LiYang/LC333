@@ -26,6 +26,5 @@ class Solution {
         int newMax = r.size == 0 ? root.val : r.max;
         max = Math.max(max, l.size + r.size + 1);
         return new Res(newMin, newMax, l.size + r.size + 1);
-
     }
 }
