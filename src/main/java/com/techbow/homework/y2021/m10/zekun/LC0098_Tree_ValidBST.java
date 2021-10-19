@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 
 public class LC0098_Tree_ValidBST {
     public boolean isValidBST(TreeNode root) {

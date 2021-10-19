@@ -1,9 +1,5 @@
-package com.techbow.homework.y2021.m10.zekun;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+package LC;
+import java.util.*;
 public class LC0046_DFS_Permutation {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();

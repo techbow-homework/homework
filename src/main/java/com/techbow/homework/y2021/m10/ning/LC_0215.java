@@ -41,7 +41,6 @@ public class LC_0215 {
 //    }
 
     // S4: quick selection
-    // time: best case O(n) worst case o(n^2); space: O(1)
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length == 0) return Integer.MAX_VALUE;
         return quickSelect(nums, 0, nums.length - 1, nums.length - k);
@@ -49,11 +48,9 @@ public class LC_0215 {
     public int quickSelect(int[] nums, int start, int end, int k) {
         if (start == end) return nums[start];
 
-        // choose random pivot for partition
         Random randomIndex = new Random();
         int pivotIndex = start + randomIndex.nextInt(end - start); // random.nextInt(n) --> [0, n)
         int pivotValue = nums[pivotIndex];
-        // move pivotIndex to the end for swap
         swap(nums, pivotIndex, end);
         int curr = start;
         for (int i = start; i <= end; i++) {
@@ -61,8 +58,6 @@ public class LC_0215 {
                 swap(nums, curr++, i);
             }
         }
-        // last state out of for loop, nums[curr] must be greater or equal to nums[i]
-        // so one more swap
         swap(nums, curr, end);
 
         if (curr == k) return nums[curr];

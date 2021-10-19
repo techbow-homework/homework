@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 
 public class LC0222_Tree_CountTreeNodes {
     public int countNodes(TreeNode root) {

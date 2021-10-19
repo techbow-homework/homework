@@ -1,8 +1,5 @@
-package com.techbow.homework.y2021.m10.zekun;
-
-import java.util.LinkedList;
-import java.util.List;
-
+package LC;
+import java.util.*;
 public class LC0282_DFS_AddOperator {
     public static void main(String[] args){
 

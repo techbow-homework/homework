@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 
 public class LC0240_Search_2D_MatrixII {
     //从左下角出发，因为左下角的值，是每行的最小值，是每列的最大值，每次仅需要比较matrix[i][j]的值和target

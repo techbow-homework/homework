@@ -1,9 +1,5 @@
-package com.techbow.homework.y2021.m10.zekun;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+package LC;
+import java.util.*;
 
 public class LC0139_DFS_WordBreak {
     public static void main(String[] args){

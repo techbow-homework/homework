@@ -1,8 +1,5 @@
-package com.techbow.homework.y2021.m10.zekun;
-
-import java.util.ArrayList;
-import java.util.List;
-
+package LC;
+import java.util.*;
 public class LC0022_DFS_Generate_Parentheses {
     public static void main(String[] args){
 

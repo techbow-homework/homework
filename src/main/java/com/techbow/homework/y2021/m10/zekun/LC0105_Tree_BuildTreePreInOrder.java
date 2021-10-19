@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 
 public class LC0105_Tree_BuildTreePreInOrder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {

@@ -1,6 +1,5 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 import java.util.*;
-
 public class LC0140_DFS_WordBreakII {
     public static void main(String[] args){
         LC0140_DFS_WordBreakII obj = new LC0140_DFS_WordBreakII();

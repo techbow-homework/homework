@@ -1,11 +1,6 @@
 
-package com.techbow.homework.y2021.m10.zekun;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+package LC;
+import java.util.*;
 public class LC0301_DFS_removeParentheses {
     public List<String> removeInvalidParentheses(String s) {
         Set<String> res = new HashSet<>();//用hashset查重；

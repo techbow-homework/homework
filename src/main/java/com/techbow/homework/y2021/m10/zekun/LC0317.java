@@ -1,8 +1,6 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LC;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.*;
 public class LC0317 {
     private static final int[][] DIRECTIONS = {{1,0}, {-1,0}, {0,1},{0,-1}};
 
