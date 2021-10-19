@@ -36,8 +36,8 @@ public class LC_0130 {
         }
     }
     private void dfs(char[][] board, int row, int col) {
-        if (row < 0 || col < 0 || row > board.length ||
-                col > board[0].length || board[row][col] != 'O') return;
+        if (row < 0 || col < 0 || row >= board.length ||
+                col >= board[0].length || board[row][col] != 'O') return;
         board[row][col] = 'E';
         dfs(board, row + 1, col);
         dfs(board, row - 1, col);
@@ -86,6 +86,23 @@ public class LC_0130 {
                     queue.offer(ii * cols + jj);
                 }
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        LC_0130 sol = new LC_0130();
+        char[][] board = {
+                {'X', 'X', 'X', 'X'},
+                {'X', 'O', 'O', 'X'},
+                {'X', 'X', 'O', 'X'},
+                {'X', 'O', 'X', 'X'}
+        };
+        sol.solve(board);
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }
