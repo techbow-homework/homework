@@ -4,8 +4,8 @@ public class Card {
     private final int value;
     private final Suit suit;
 
-    public Card(int value, Suit suit) {
-        this.value = value;
+    public Card(int val, Suit suit) {
+        value = val;
         this.suit = suit;
     }
 
@@ -13,7 +13,7 @@ public class Card {
         return value;
     }
 
-    public int getCardSuit() {
-        return Id;
+    public Suit getCardSuit() {
+        return suit;
     }
 }
