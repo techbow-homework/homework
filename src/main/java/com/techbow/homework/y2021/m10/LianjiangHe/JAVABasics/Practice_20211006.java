@@ -1,8 +1,4 @@
-package com.techbow.homework.y2021.m10.LianjiangHe;
-import java.util.Scanner;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collections;
+package com.techbow.homework.y2021.m10.LianjiangHe.JAVABasics;
 
 public class Practice_20211006 {
     public static void main(String[] args) {
