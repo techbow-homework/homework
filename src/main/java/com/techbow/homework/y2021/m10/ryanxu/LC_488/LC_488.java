@@ -45,7 +45,7 @@ public class LC_488 {
                 if (curNum - 1 > 0) {
                     handMap.put(cur, curNum - 1);
                 }
-                String newBoard = getNewBoard(board, i - 1, i + 2); // TODO
+                String newBoard = getNewBoard(board, i - 1, i + 2);
                 int val = dfs(newBoard, handMap);
                 min = val == -1 ? Integer.MAX_VALUE : Math.min(val + 1, min);
                 handMap.put(cur, curNum);
