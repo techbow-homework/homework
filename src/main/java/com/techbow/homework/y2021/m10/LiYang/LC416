@@ -1,0 +1,24 @@
+class Solution {
+    public boolean canPartition(int[] nums) {
+        if(nums == null || nums.length == 0) return false;
+        int totalSum = 0;
+        for(int temp : nums){
+            totalSum += temp;
+        }
+        return dfs(nums, 0, 0, totalSum, new Boolean[totalSum + 1][nums.length + 1]);
+    }
+    private boolean dfs(int[] nums, int index, int sumSofar, int totalSum, Boolean[][] memo){
+        if(2 * sumSofar > totalSum) return false;
+        if(2 * sumSofar == totalSum) return true;
+        if(memo[sumSofar][index] != null) return memo[sumSofar][index];
+
+        for(int i = index; i < nums.length; i++){
+            if(dfs(nums, i + 1, sumSofar + nums[i], totalSum, memo)){
+                memo[sumSofar][index] = true;
+                return true;
+            }
+        }
+        memo[sumSofar][index] = false;
+        return false;
+    }
+}
