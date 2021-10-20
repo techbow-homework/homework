@@ -1,0 +1,39 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        //corner case
+        if(numCourses == 0) return true;
+        //build the graph
+        Map<Integer, List<Integer>> map = new HashMap<>();//map prereq to its trailing courses
+        int[] inDegree = new int[numCourses];
+        for(int[] relation: prerequisites){
+            if(!map.containsKey(relation[1])){
+                map.put(relation[1], new ArrayList<Integer>());
+            }
+            map.get(relation[1]).add(relation[0]);//store each edge that exist on the graph
+            inDegree[relation[0]]++;//count number of incoming edge for each node
+        }
+        //build the queue for nodes that does not have any connections
+        Queue<Integer> q = new LinkedList<>();
+        for(int i = 0 ; i < numCourses; i++){
+            if(inDegree[i] == 0){
+                q.offer(i);
+            }
+        }
+        //iterate through the graph
+        while(!q.isEmpty()){
+            int currCourse = q.poll();
+            List<Integer> currList = map.get(currCourse);
+            if(currList != null){
+                for(int nextCourse: currList){
+                    inDegree[nextCourse]--;
+                    if(inDegree[nextCourse] == 0) q.offer(nextCourse);
+                }
+            }
+
+        }
+        for(int i = 0; i < numCourses; i++){
+            if(inDegree[i] != 0) return false;
+        }
+        return true;
+    }
+}
