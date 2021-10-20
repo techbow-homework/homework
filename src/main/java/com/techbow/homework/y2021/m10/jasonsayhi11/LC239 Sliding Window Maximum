@@ -12,13 +12,10 @@ class Solution {
             if (!q.isEmpty() && q.peekFirst() < i - k + 1) {
                 q.pollFirst();
             }
-
             while (!q.isEmpty() && nums[q.peekLast()] < nums[i]) {
                 q.pollLast();
             }
-
             q.add(i);
-
             if (i >= k - 1) {
                 res[ri++] = nums[q.peek()];
             }
