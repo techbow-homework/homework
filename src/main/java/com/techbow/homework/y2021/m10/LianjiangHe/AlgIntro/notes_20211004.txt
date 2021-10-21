@@ -1,0 +1,11 @@
+//written by Lianjiang He at 2021/10/04
+//算法入门4
+Tree&Binary Search Tree
+
+Hanoi tower
+recursion
+in order to get step(n),need to get step(n-1)
+//
+Graph
+DFS-QUEUE
+BFS-RECURSION
