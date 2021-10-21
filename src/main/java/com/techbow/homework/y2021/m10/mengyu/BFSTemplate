@@ -1,0 +1,16 @@
+returnType bfs(root) {
+    new queue;
+    queue.offer(root);
+    minLen = 0;
+    while (!queue.isEmpty()) {
+        int size = queue.size();
+        while (size-- > 0) {
+            cur = queue.poll();
+            next = convert(cur);
+            if(condition ---> visited?) {
+                queue.offer(next;)
+            }
+        }
+        minLen++;
+    }
+}
