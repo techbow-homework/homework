@@ -9,10 +9,12 @@ public class LC542 {
         if (mat == null || mat.length == 0 || mat[0] == null || mat[0].length == 0) {
             return mat;
         }
+
         int row = mat.length;
         int col = mat[0].length;
         int[][] dis = new int[row][col];
         int distance = 1;
+
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -21,6 +23,7 @@ public class LC542 {
                 }
             }
         }
+
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size-- > 0) {
