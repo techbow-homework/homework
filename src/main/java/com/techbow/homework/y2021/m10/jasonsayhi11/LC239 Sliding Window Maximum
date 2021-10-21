@@ -20,7 +20,6 @@ class Solution {
                 res[ri++] = nums[q.peek()];
             }
         }
-
         return res;
     }
 }
