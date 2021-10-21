@@ -1,0 +1,66 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+
+class Solution {
+    /*public Node cloneGraph(Node node) {//use one data structure to iterate the node and one data structure to store the created node BFS
+        //corner case
+        if(node == null) return null;
+        HashMap<Integer, Node> map = new HashMap<>();
+        Queue<Node> q= new LinkedList<>();
+        boolean[] visited = new boolean[101];//before add the node to queue, need to check if visited
+        q.offer(node);
+        visited[node.val] = true;
+        while(!q.isEmpty()){
+            Node curr = q.poll();
+            if(!map.containsKey(curr.val)){
+                map.put(curr.val, new Node(curr.val));
+            }
+            Node currClone = map.get(curr.val);
+
+            for(Node child: curr.neighbors){
+                if(!visited[child.val]){
+                    q.offer(child);
+                    visited[child.val] = true;
+                }
+                if(!map.containsKey(child.val)){
+                    map.put(child.val, new Node(child.val));
+                }
+                currClone.neighbors.add(map.get(child.val));
+            }
+
+        }
+        return map.get(node.val);
+    }*/
+    HashMap<Integer, Node> map = new HashMap<>();
+    public Node cloneGraph(Node node) {//DFS
+        //corner case
+        if(node == null) return null;
+        if(!map.containsKey(node.val)){
+            Node clone = new Node(node.val);
+            map.put(clone.val, clone);
+            if(node.neighbors != null){
+                for(Node child: node.neighbors){
+                    clone.neighbors.add(cloneGraph(child));
+                }
+            }
+        }
+        return map.get(node.val);
+    }
+}
