@@ -1,0 +1,24 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {//use a hashset to find duplicates, two pointers to find the largest gap.
+        //corner case
+        if(s.length() <= 0) return s.length();
+
+        int slow = 0, fast = 0, len = 0;
+        HashSet<Character> hs = new HashSet<>();
+        while(fast < s.length()){
+            if(!hs.contains(s.charAt(fast))){
+                hs.add(s.charAt(fast));
+                len = Math.max(len, fast - slow + 1);
+                fast++;
+            }else{
+                while(s.charAt(slow) != s.charAt(fast)){
+                    hs.remove(s.charAt(slow));
+                    slow++;
+                }
+                hs.remove(s.charAt(slow));
+                slow++;
+            }
+        }
+        return len;
+    }//follow up use int array to improve
+}

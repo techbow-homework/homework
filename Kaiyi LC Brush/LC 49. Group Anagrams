@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {//use a map to store each unique string anagram vs list of strings that is its anagram. use a helper function to compare each key and a new string
+        List<List<String>> res = new ArrayList<>();
+        //corner case
+        if(strs == null || strs.length == 0) return res;
+        Map<String, List<String>> groups = new HashMap<>();
+        for(String str :strs){
+            String reorder = reorder(str);
+            if(!groups.containsKey(reorder)){
+                groups.put(reorder, new ArrayList<String>());
+            }
+            groups.get(reorder).add(str);
+        }
+        for(List<String> value : groups.values()){
+            res.add(value);
+        }
+        return res;
+    }
+
+    public String reorder(String str){
+        if(str== null ||str.length() == 0) return str;
+        char[] currChar = str.toCharArray();
+        Arrays.sort(currChar);
+        str = String.valueOf(currChar);
+        return str;
+    }
+}

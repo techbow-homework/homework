@@ -1,0 +1,32 @@
+//解题思路是：
+//input array 每一个index位置的字母，可以被替换成1或者不替换；
+//如果替换成1，需要看一下能不能和之前的数字相加结合
+class Solution {
+    public List<String> generateAbbreviations(String word) {
+        List<String> res = new LinkedList<>();
+        if(word == null || word.length() == 0) return res;
+        StringBuilder sb = new StringBuilder();
+        dfs(word, 0, 0, sb, res);
+        return res;
+    }
+    private void dfs(String word, int index, int num, StringBuilder sb, List<String> res){
+        if(index == word.length()){
+            if(num > 0){
+                sb.append(String.valueOf(num));
+            }
+            res.add(sb.toString());
+            return;
+        }
+        // not replace
+        int size = sb.length();
+        dfs(word, index + 1, num + 1, sb, res);
+        sb.setLength(size);
+        //replaced by 1;
+        if(num > 0){
+            sb.append(String.valueOf(num));
+        }
+        sb.append(word.charAt(index));
+        dfs(word, index + 1, 0, sb, res);
+        sb.setLength(size);
+    }
+}

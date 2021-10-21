@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        //corner case
+        if(s.length() != t.length()) return false;
+        //use two maps to build the two way one to one relationship
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+
+        for( Integer i =  0; i < s.length(); i++){
+            char schar = s.charAt(i);
+            char tchar = t.charAt(i);
+            if(map1.put(schar, i) != map2.put(tchar, i)) return false;
+        }
+        return true;
+    }
+}
+/*class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+
+        for(Integer i = 0; i < s.length(); i++){
+            if(map1.put(s.charAt(i), i) != map2.put(t.charAt(i), i)) return false;
+        }//If an existing key is passed then the previous value gets returned. If a new pair is passed, then NULL is returned.
+        return true;
+    }
+}*/
