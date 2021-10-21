@@ -2,7 +2,7 @@ package com.techbow.homework.y2021.m10.mingyu;
 
 import java.util.LinkedList;
 
-public class LC_286 {
+public class LC286 {
     private static final int[][] DIRECTIONS = {{-1, 0},{1, 0},{0, -1},{0, 1}}; // up,down,left,right
     //corner case
     public static int[][] wallsAndGates(int[][] rooms){
