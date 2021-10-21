@@ -1,0 +1,30 @@
+class Solution {
+    public String fractionToDecimal(int numerator, int denominator) {
+        //corner case
+        if(numerator == 0) return "0";
+
+        StringBuilder sb = new StringBuilder();
+        long nmr = Math.abs((long) numerator);
+        long dnm = Math.abs((long) denominator);
+        if(numerator < 0 ^ denominator < 0) sb.append("-"); // xor, true only if two conditions are different, take care of the sign in this part
+
+        long remainder = nmr % dnm;//in the case of -1 and -2147483648 need long here
+        sb.append(nmr/dnm);//
+        if(remainder == 0) return sb.toString();
+        sb.append(".");
+
+        HashMap<Long, Integer> map = new HashMap<>();// map the Long to it's index in the sb
+        while(remainder != 0){
+            if(map.containsKey(remainder)){
+                sb.insert(map.get(remainder), "(");
+                sb.append(")");
+                return sb.toString();
+            }
+            map.put(remainder, sb.length());//cause we are comparing the remainder, do not need to worry about repeating digits in the out put.
+            remainder *= 10;//notice the order here, is important
+            sb.append(remainder/dnm);
+            remainder %= dnm;
+        }
+        return sb.toString();
+    }
+}
