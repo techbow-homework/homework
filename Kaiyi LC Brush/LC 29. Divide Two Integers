@@ -1,0 +1,20 @@
+class Solution {
+    public int divide(int dividend, int divisor) {//time log(n)
+        //corner case is when Integer.MIN_VALUE becomes Intger.MAX_VALUE
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+        int res = 0;
+        long dd = Math.abs((long)dividend);
+        long ds = Math.abs((long)divisor);//use long cause when we do ds << shift may out of bound for integer
+
+        while(dd >= ds){
+            int shift = 1;//shift need to be 1, cause case 0 is implcitly dealt with by dd > ds
+            while(dd >= (ds << shift)){
+                shift++;
+            }
+            dd -= ds << (shift - 1);
+            res += 1 << (shift - 1);
+        }
+        if((dividend > 0 && divisor > 0) || (dividend < 0 && divisor < 0)) return res;
+        else return -res;
+    }
+}

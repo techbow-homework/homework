@@ -1,0 +1,112 @@
+录像： Sep 29:
+L118
+dp[i] = dp[i] + dp[i-1] 从右向左update, 可以从n^2 到n : space complexity
+L64:
+S1:DFS O(2^n)从上往下
+helper params: 1. input 2. i 3.j  4. 局部的结果
+like matrix[i][j]
+
+S2 recursion
+从下往上
+Integer [][] dp = new Integer[][];
+
+S3 pruning n^2
+private int divideConquer(int i, int j, int[][] matrix) {
+	if (i == n) return 0;
+	// 1
+	if (dp[i][j] != null ){
+	return dp[i][j];
+}
+	int left = divideConquer(i + 1, j, matrix);
+int right = divideConquer(i + 1, j + 1, matrix);
+// 2
+dp[i][j]= matrix[i][j]+Math.min(left, right);
+return dp[i][j];
+}
+
+S4 DP
+S4 DP space 优化，直接用matrix
+
+Sequence:
+dp[i] the length of longest ascending subarray from 0 to i [0,  i)
+public int longest( int[] array){
+	if( array==  null  ||  array.length  == 0 ) return 0;
+	int[] dp = new int[array.length];
+	int max = 1;
+	dp[0] = 1;
+	for ( int i=1; i < array.length: i++ ) {
+	if( array[i]>array[i-1]){
+	dp[i]  = dp[i-1]+1;
+	max = Math.max(max, dp[i]);
+}else{
+	dp[i] = 1;
+}
+}
+return max;
+}
+L152
+优化看状态转移方程
+L55
+S1： recursion 分叉是当先能有多少种选择
+private boolean canJump( int[] array, int index) {
+	if ( index >= array.length -1 ) return true;
+	for( int i=0; i<= array[index]; i++){
+		boolean check = canJump( array, index+i);
+		if ( check ) {
+	return ture;
+}
+}
+return false;
+}
+recursion中，base case是终止条件，for loop 代表开几个分叉
+continue: 指的是当先这个分叉不走了 ，走下一个
+break: 当先这个loop不走了，但是走后面的code
+return: 直接返回上一层、
+S2： dp, 从后往前看，建一个size n 的boolean array
+
+
+
+
+录像 ： Sep  22:
+L242
+Check anagram
+S1：可以用hashmap，或者int array
+既可以 用 两个hashmap来比较，也可以一个hashmap, 第一次见到的时候加入，遍历另一个string的 时候减去就可，如果最后hashmap最后是空的，说明就为anagram
+Time:  O(m+n)  Space: O（n) -> O(k）-> int[256]
+S2： sort, if they are identical, it’s anagram
+一般sort 是O（nlogn) , 但这里可以用bucket sort, count sort, 就变O（n) 时间复杂度
+可以用hash的方法，来比较两个array, 权重选取重复次数的最大值，比如如果是10进制，取值就是0-9，如果不知道的话，就取string的长度，因为即使一个character是整个string的长度，这个hash出来的时候可以表示
+S3：使用prime number来hash: 是为了双向对应不重复
+S4; union find
+
+11.1 Valid Palindrome
+two pointer, 两边往中间走
+
+isomorphic 结构一样
+双向唯一 ： S1： 两个hashmap
+S2 用index
+
+Q12： longest palindroimc substring
+[l, r] -> r-l +1
+左闭右开 r-l
+左开右开 r-l -1
+优化（max or min) 先找一个最大值或者最小值，然后之后找的时候如果没有这个大或者小，就不做了
+看TEMP special
+Q13 Longest substring length without repeating:
+slow fast pointers
+O(1)时间查，可以用hashset
+如果之前slow移动了以后，会影响之后的世间法复杂度，要考虑amortized time complexity
+
+Dynamic Programming:
+Fill Flood: Windows Paint Paint Tools:
+DP思想：
+Base case
+Induction rule
+解题步骤：
+Definition dp[i]
+base case/ Start
+inductioon rule: 当前的i跟以前的关系
+termination/answer
+optimization ： 主要是优化空间
+
+O（0)->用input的params来进行dp存储
