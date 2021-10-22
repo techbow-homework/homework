@@ -13,7 +13,7 @@ public class LC153 {
             if(nums[mid] > nums[nums.length -1]) {
                 left = mid;
             } else {
-                right = mid;
+                right = mid; //1
             }
         }
         if(nums[left] < nums[right]) { //compare left and right find minimun.
