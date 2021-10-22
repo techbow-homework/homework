@@ -1,16 +1,16 @@
 class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target){
+    public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         return fourSumHelper(nums, target, 4, 0);
     }
 
-    public List<List<Integer>> fourSumHelper(int[] nums, int target, int k, int start){
+    public List<List<Integer>> fourSumHelper(int[] nums, int target, int k, int start) {
         List<List<Integer>> res = new ArrayList<>();
-        if(k == 2){
+        if (k == 2) {
             int lefti = start;
             int righti = nums.length - 1;
-            while(lefti < righti) {
-                if(nums[lefti] + nums[righti] == target){
+            while (lefti < righti) {
+                if (nums[lefti] + nums[righti] == target) {
                     List<Integer> temp = new ArrayList<>();
                     temp.add(nums[lefti]);
                     temp.add(nums[righti]);
@@ -28,11 +28,11 @@ class Solution {
                 }
             }
         }
-        else{
-            for(int i = start; i < nums.length; i++) {
-                if(i != start && nums[i] == nums[i - 1]) continue;
+        else {
+            for (int i = start; i < nums.length; i++) {
+                if (i != start && nums[i] == nums[i - 1]) continue;
                 List<List<Integer>> nextres = fourSumHelper(nums,target - nums[i], k - 1, i + 1);
-                for(List<Integer> list : nextres){
+                for (List<Integer> list : nextres) {
                     list.add(0, nums[i]);
                 }
                 res.addAll(nextres);
