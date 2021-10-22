@@ -3,7 +3,7 @@ package com.techbow.homework.y2021.m10.MelodySong0827;
 import java.util.*;
 
 public class LC417 {
-    class Solution {
+
         private static final int[][] DIRECTIONS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         public List<List<Integer>> pacificAtlantic(int[][] heights) {
             List<List<Integer>> res = new ArrayList<>();
@@ -69,5 +69,4 @@ public class LC417 {
                 }
             }
         }
-    }
 }
