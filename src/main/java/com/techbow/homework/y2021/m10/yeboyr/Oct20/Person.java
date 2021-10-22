@@ -49,4 +49,9 @@ class Person{
 
     }
 
+    public Object ifId(){
+        if (this.id !=0){return "assigned";
+        } else { return "not assigned";}
+    }
+
 }
