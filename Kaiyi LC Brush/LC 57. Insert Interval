@@ -1,0 +1,25 @@
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {//add all the smaller intervals to the list first , then add the newInterval, for each added after, merge with the previous if there is overlap.
+        //corner case
+
+        List<int[]> resList = new ArrayList<>();
+        int index = 0;
+        int len = intervals.length;
+        while(index < len && intervals[index][1] < newInterval[0]){// the next index is intervals[index][1] <= newInterval[0]
+            resList.add(intervals[index++]);
+        }
+        resList.add(newInterval);
+        for(;index < len; index++){
+            int[] prev = resList.get(resList.size() - 1);
+            if(prev[1] < intervals[index][0]  || prev[0] > intervals[index][1]){
+                resList.add(intervals[index]);
+            }else{
+                int start = Math.min(prev[0], intervals[index][0]);
+                int end = Math.max(prev[1], intervals[index][1]);
+                prev[0] = start;
+                prev[1] = end;
+            }
+        }
+        return resList.toArray(new int[resList.size()][]);
+    }
+}

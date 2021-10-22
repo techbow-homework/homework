@@ -1,0 +1,26 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {//first of all sort the array by the first number in the subarray, thengo though the subarray one by one recording the start and end of previous interval. If there is overlap, change the range, if not add the range to the result and make the range current subarray range
+        //corner case
+        if(intervals== null || intervals.length <=1) return intervals;
+
+        List<int[]> res = new ArrayList<>();
+        Arrays.sort(intervals, (a,b)-> a[0] - b[0]);
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+        for(int i = 1; i < intervals.length; i++){
+            if(intervals[i][0]<= end){
+                if(intervals[i][1]>=end)end = intervals[i][1];// need to be carefull about the including case
+            }else{
+                res.add(new int[]{start, end});
+                start = intervals[i][0];
+                end = intervals[i][1];
+            }
+        }
+        res.add(new int[]{start, end});
+        int[][] arrayRes = new int[res.size()][2];
+        for(int i = 0; i < res.size(); i++){
+            arrayRes[i] = res.get(i);
+        }
+        return arrayRes;
+    }
+}
