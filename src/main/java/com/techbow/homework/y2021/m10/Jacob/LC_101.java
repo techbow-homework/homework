@@ -1,16 +1,5 @@
 package com.techbow.homework.y2021.m10.Jacob;
- class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
+
 public class LC_101 {
     public boolean isSymmetric(TreeNode root) {
         return ismirror(root, root);
@@ -24,5 +13,22 @@ public class LC_101 {
                 && ismirror(left.left, right.right)
                 && ismirror(left.right, right.left);
 
+
+    }
+    public static void main(String[] args) {
+          LC_101 lc = new LC_101();
+          lc.ismirror(new TreeNode(), new TreeNode());
     }
 }
+class TreeNode {
+      int val;
+      TreeNode left;
+     TreeNode right;
+     TreeNode() {}
+     TreeNode(int val) { this.val = val; }
+     TreeNode(int val, TreeNode left, TreeNode right) {
+         this.val = val;
+         this.left = left;
+         this.right = right;
+     }
+  }
