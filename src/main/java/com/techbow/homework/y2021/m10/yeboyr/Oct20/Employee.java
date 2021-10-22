@@ -6,6 +6,8 @@ public class Employee {
         person1.setInfo("Yueru","Lin",1,2000);
         person1.raise(100);
         System.out.println(person1);
+        System.out.println(person1.ifId());
 
     }
+
 }
