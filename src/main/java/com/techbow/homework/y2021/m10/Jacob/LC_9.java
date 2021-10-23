@@ -12,5 +12,5 @@ public class LC_9 {
         }
         return cur == x;
     }
-    }
+}
 
