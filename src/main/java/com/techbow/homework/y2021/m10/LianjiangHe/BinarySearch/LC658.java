@@ -1,45 +1,43 @@
 package com.techbow.homework.y2021.m10.LianjiangHe.BinarySearch;
 public class LC658 {
-/*      这道题给了一个数组,还有两个变量k和x.让找数组中离x最近的k个元素
-        而且说明了数组是有序的,如果两个数字距离x相等的话,取较小的那个
-        从给定的例子可以分析出x不一定是数组中的数字,由于数组是有序的,
-        所以最后返回的k个元素也一定是有序的，那么其实就是返回了原数组的一个长度为k的子数组
-        实际上相当于在长度为n的数组中去掉 n-k 个数字，而且去掉的顺序肯定是从两头开始去，因为距离x最远的数字肯定在首尾出现。
-        每次比较首尾两个数字跟x的距离，将距离大的那个数字删除，直到剩余的数组长度为k为止*/
-}
-/*option 1 brute force 把每个int丢进comparator里面比较,小的就放前面
-//Time complexity: O(N⋅log(N)+k⋅log(k).
+
+/*option 1
+直观解法,由于数组有序，所以最后找到的k个元素也一定是有序的，其实就是返回了一个长度为k的子数组，
+相当于在长度为n的数组中去掉n-k个数字， 而且去掉的顺序肯定是从两头开始去，因为距离x最远的数字肯定在首尾出现。
+每次比较首尾两个数字跟x的距离，将距离大的那个数字删除，直到剩余的数组长度为k为止。
+留下最近的,去掉最远的,直到数组长度为k
+*/
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        // Convert from array to list first to make use of Collections.sort()
-        List<Integer> sortedArr = new ArrayList<Integer>();
-        for (int num: arr) {
-            sortedArr.add(num);
-        }
-
-        // Sort using custom comparator
-        Collections.sort(sortedArr, new Comparator<Integer>(){
-            @Override
-            public int compare(Integer num1, Integer num2) {
-                // 返回值为int类型，大于0表示正序，小于0表示逆序
-                return Math.abs(num1 - x) - Math.abs(num2 - x);
-            }
-        });
-
-        // Only take k elements
-        sortedArr = sortedArr.subList(0, k);
-
-        // Sort again to have output in ascending order
-        Collections.sort(sortedArr);
-        return sortedArr;
+     List<Integer> res=new ArrayList<>();
+			 int len=arr.length;
+			 int left=0;
+			 int right=len-1;
+			 while (len>k) {
+				if (Math.abs(arr[left]-x)>Math.abs(arr[right]-x)) {
+					left++;
+				}else {
+					right--;
+				}
+				len--;
+			}
+	        for (int index = left; index <=right; index++) {
+	                  res.add(arr[index]);
+			}
+		     return res;
+	    }
     }
-}
-*/
-//option 2
+/*option 2
+* 
+*
+* */
+
+//option 3
 /*
 * 题目要求求出一组数字，它们是与某个数字最为接近的一组数字。简单来讲，我们需要先找到最接近x的数字n，
 * 最后的结果一定是数组中包含数字n的一个子数组。我们需要做的是不断地比较n两边的数字的同时，不断的扩大n两边的范围，直到范围长度等于k为止。
 * */
+/*
 
 class Solution {
 public List<Integer> findClosestElements(int[] arr, int k, int x) {
@@ -85,4 +83,39 @@ public List<Integer> findClosestElements(int[] arr, int k, int x) {
         }
         return high>=0?high:0;
     }
+}*/
+/*      这道题给了一个数组,还有两个变量k和x.让找数组中离x最近的k个元素
+        而且说明了数组是有序的,如果两个数字距离x相等的话,取较小的那个
+        从给定的例子可以分析出x不一定是数组中的数字,由于数组是有序的,
+        所以最后返回的k个元素也一定是有序的，那么其实就是返回了原数组的一个长度为k的子数组
+        实际上相当于在长度为n的数组中去掉 n-k 个数字，而且去掉的顺序肯定是从两头开始去，因为距离x最远的数字肯定在首尾出现。
+        每次比较首尾两个数字跟x的距离，将距离大的那个数字删除，直到剩余的数组长度为k为止*/
 }
+/*option 4 brute force 把每个int丢进comparator里面比较,小的就放前面
+//Time complexity: O(N⋅log(N)+k⋅log(k).
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        // Convert from array to list first to make use of Collections.sort()
+        List<Integer> sortedArr = new ArrayList<Integer>();
+        for (int num: arr) {
+            sortedArr.add(num);
+        }
+
+        // Sort using custom comparator
+        Collections.sort(sortedArr, new Comparator<Integer>(){
+            @Override
+            public int compare(Integer num1, Integer num2) {
+                // 返回值为int类型，大于0表示正序，小于0表示逆序
+                return Math.abs(num1 - x) - Math.abs(num2 - x);
+            }
+        });
+
+        // Only take k elements
+        sortedArr = sortedArr.subList(0, k);
+
+        // Sort again to have output in ascending order
+        Collections.sort(sortedArr);
+        return sortedArr;
+    }
+}
+*/
