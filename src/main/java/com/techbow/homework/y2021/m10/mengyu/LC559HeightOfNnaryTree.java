@@ -10,7 +10,7 @@ public class LC559HeightOfNnaryTree {
     List<Integer> heights = new ArrayList<>();
     public int heightOfNTree (Node root) {
         if (root == null) return 0;
-        if (root.children.isEmpty()) return 1;:
+        if (root.children.isEmpty()) return 1;
         for (Node node : root.children) {
             heights.add(heightOfNTree(node));
         }
