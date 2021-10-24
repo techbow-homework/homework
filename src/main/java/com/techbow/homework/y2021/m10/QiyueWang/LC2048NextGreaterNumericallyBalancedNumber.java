@@ -1,7 +1,7 @@
 package com.techbow.homework.y2021.m10.QiyueWang;
 
 public class LC2048NextGreaterNumericallyBalancedNumber {
-    public static int nextBeautifulNumber(int n) {
+    public static int nextBalancedNumber(int n) {
         while(true){
             n ++;
             if(isBalanced(n)){
@@ -28,8 +28,8 @@ public class LC2048NextGreaterNumericallyBalancedNumber {
         int n = 1;
         int n2 = 1000;
         int n3 = 3000;
-        System.out.println(nextBeautifulNumber(n));//22
-        System.out.println(nextBeautifulNumber(n2));//1333
-        System.out.println(nextBeautifulNumber(n3));//3133
+        System.out.println(nextBalancedNumber(n));//22
+        System.out.println(nextBalancedNumber(n2));//1333
+        System.out.println(nextBalancedNumber(n3));//3133
     }
 }
