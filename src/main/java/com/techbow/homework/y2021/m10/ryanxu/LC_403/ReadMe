@@ -1,0 +1,3 @@
+解题思路：
+每次game开始，都从idx 0石头开始，每次分 3叉: k - 1, k, k + 1; 注意 memo的设计，这里idx是连续的，lastStep是离散的，所以可以用
+HashMap<Integer, Integer>[] memo 来做memo. 查看时间复杂度
