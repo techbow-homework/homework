@@ -31,7 +31,7 @@ public class LintCode_147 {
         }
         return count;
     }
-    //Method2: 利用toString來得到位數和個別數字
+    //Method2: 利用inttoArray方法來得到位數和個別數字
     public boolean ifN(int n) {
         int[] array = intToArray(n);
         int length = array.length;
