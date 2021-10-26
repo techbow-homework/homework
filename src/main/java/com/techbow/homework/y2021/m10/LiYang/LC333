@@ -1,0 +1,30 @@
+class Res{
+    public int min;
+    public int max;
+    public int size;
+    Res(int min, int max, int size){
+        this.min = min;
+        this.max = max;
+        this.size = size;
+    }
+}
+class Solution {
+    private int max = 0;
+    public int largestBSTSubtree(TreeNode root) {
+        if(root == null) return 0;
+        dfs(root);
+        return max;
+    }
+    private Res dfs(TreeNode root){
+        if(root == null) {
+            return new Res(0,0,0);
+        }
+        Res l = dfs(root.left);
+        Res r = dfs(root.right);
+        if(l == null || r == null || (l.size != 0 && root.val <= l.max) || (r.size != 0 && root.val >= r.min)) return null;
+        int newMin = l.size == 0 ? root.val : l.min;
+        int newMax = r.size == 0 ? root.val : r.max;
+        max = Math.max(max, l.size + r.size + 1);
+        return new Res(newMin, newMax, l.size + r.size + 1);
+    }
+}

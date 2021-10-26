@@ -1,3 +1,8 @@
+// 为什么nums[mid] >= nums[left]？
+// 例如nums: [3,1], target: 1, 此时，mid = left = 0。
+// 我们需要检查right pointer。并且此时target < nums[mid] && target >= nums[left] 和 target > nums[mid] && target <= nums[right] 都不成立。
+// 我们要让left = mid + 1。需要进入nums[mid] >= nums[left]的循环。
+
 class Solution {
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {

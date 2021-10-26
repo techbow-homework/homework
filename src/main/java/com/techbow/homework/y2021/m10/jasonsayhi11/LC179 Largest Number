@@ -1,0 +1,25 @@
+class Solution {
+    public String largestNumber(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return new String();
+        }
+
+        String[] snums = new String[nums.length];
+        for (int i = 0; i < snums.length; i++) {
+            snums[i] = String.valueOf(nums[i]);
+        }
+
+        Arrays.sort(snums, (a,b) -> (b + a).compareTo(a + b));
+
+        StringBuilder res = new StringBuilder();
+
+        for (String s : snums) {
+            res.append(s);
+        }
+        if(res.charAt(0) == '0') {
+            return "0";
+        }
+
+        return res.toString();
+    }
+}

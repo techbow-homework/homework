@@ -31,4 +31,5 @@ public class LC2033MinimumOperationsToMakeAUniValuedGrid {
         System.out.println(minOperations(grid2,2)); // -1
         System.out.println(minOperations(grid3,2)); // 4
     }
+
 }
