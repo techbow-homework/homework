@@ -6,7 +6,7 @@ public class LC329LongestIncreasingPathInAMatrix {
         int m = matrix.length;
         int n = matrix[0].length;
         int max = 0;
-        Integer[][] mem = new Integer[m][n];
+        int[][] mem = new int[m][n];
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
                 int l = dfs(matrix, i, j, -1, mem);
@@ -15,11 +15,11 @@ public class LC329LongestIncreasingPathInAMatrix {
         }
         return max;
     }
-    private static int dfs(int[][] matrix, int i, int j, int prevVal, Integer[][] mem){
+    private static int dfs(int[][] matrix, int i, int j, int prevVal, int[][] mem){
         int m = matrix.length;
         int n = matrix[0].length;
         if(i < 0 || j < 0 || i >= m || j >=n || matrix[i][j] <= prevVal) return 0;
-        if(mem[i][j] != null) return mem[i][j];
+        if(mem[i][j] != 0) return mem[i][j];
 
         int curLen = 0;
         for(int[] d : dirs){
