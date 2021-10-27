@@ -1,0 +1,75 @@
+class Solution {
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        //C.C
+        Set<String> dict = new HashSet<>();
+        for(String temp : wordList){
+            dict.add(temp);
+        }
+        Map<String, List<String>> graph = new HashMap<>();
+        Queue<String> que = new LinkedList<>();
+        que.offer(beginWord);
+        dict.remove(beginWord);
+        while(!que.isEmpty()){
+            int size = que.size();
+            Set<String> levelVisited = new HashSet<>();
+            while(size-- > 0){
+                String curr = que.poll();
+                if(curr.equals(endWord)) break;
+                List<String> nexts = findNext(curr, dict);
+                for(String next : nexts){
+                    //if(!dict.contains(next)) continue;
+                    if(!graph.containsKey(next)){
+                        graph.put(next, new LinkedList<>());
+                    }
+                    if(!levelVisited.contains(next)){
+                        que.offer(next);
+                        levelVisited.add(next);
+                    }
+                    graph.get(next).add(curr);
+                }
+            }
+            for(String temp : levelVisited){
+                dict.remove(temp);
+            }
+        }
+        List<List<String>> res = new LinkedList<>();
+        List<String> path = new LinkedList<>();
+        path.add(endWord);
+        dfs(graph, beginWord, endWord, path, res);
+        return res;
+    }
+
+    private List<String> findNext(String curr, Set<String> dict){
+        List<String> res = new LinkedList<>();
+        char[] chars = curr.toCharArray();
+        for(int i = 0; i < chars.length; i++){
+            char original = chars[i];
+            for(char j = 'a'; j <= 'z'; j++){
+                if(j == original) continue;
+                chars[i] = j;
+                String sofar = String.valueOf(chars);
+                if(dict.contains(sofar)){
+                    res.add(sofar);
+                }
+            }
+            chars[i] = original;
+        }
+        return res;
+    }
+
+    private void dfs(Map<String, List<String>> graph, String begin, String sofar, List<String> path, List<List<String>> res){
+        if(sofar.equals(begin)){
+            res.add(new LinkedList<String>(path));
+            return;
+        }
+        if(!graph.containsKey(sofar)){
+            return;
+        }
+        List<String> nexts = graph.get(sofar);
+        for(String next : nexts){
+            path.add(0,next);
+            dfs(graph, begin, next, path, res);
+            path.remove(0);
+        }
+    }
+}

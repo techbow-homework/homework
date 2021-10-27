@@ -1,0 +1,29 @@
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {//use customize priority queue
+        //corner case
+        if(matrix == null || matrix.length == 0 || k <= 0) throw new IllegalArgumentException();
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> matrix[a[0]][a[1]] - matrix[b[0]][b[1]]);
+        int row = matrix.length;
+        int col = matrix[0].length;
+        boolean[][] visited = new boolean[row][col];
+        pq.offer(new int[]{0,0});
+        int[] curr = new int[2];
+        for(int i = 0; i < k; i++){
+            curr = pq.poll();
+            int x = curr[0];
+            int y = curr[1];
+
+            //add immediate right and down element into the pq
+            if(x + 1 < col && !visited[x + 1][y]){
+                pq.offer(new int[]{x + 1, y});
+                visited[x + 1][y] = true;
+            }
+            if(y + 1 < row && !visited[x][y + 1]){
+                pq.offer(new int[]{x, y + 1});
+                visited[x][y + 1] = true;//improvement use hash and hashset to find duplicate
+            }
+        }
+
+        return matrix[curr[0]][curr[1]];
+    }
+}

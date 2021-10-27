@@ -1,0 +1,74 @@
+class Res{
+    boolean isContainsTarget;
+    int minRootToLeaf;
+    int minRootToTarget;
+    Integer minLeaf;
+    public Res(){
+    }
+}
+class Solution {
+    private int closestDist = Integer.MAX_VALUE;
+    private int closestLeaf;
+
+    public int findClosestLeaf(TreeNode root, int k) {
+        if(root == null){
+            throw new IllegalArgumentException("input invalid");
+        }
+        findClosestLeafHelper(root, k);
+        return closestLeaf;
+    }
+    private Res findClosestLeafHelper(TreeNode root, int k){
+        if(root == null ) return null;
+        Res l = findClosestLeafHelper(root.left, k);
+        Res r = findClosestLeafHelper(root.right, k);
+
+        Res sofar = new Res();
+
+        //update isContains
+        if(l != null && l.isContainsTarget || r != null && r.isContainsTarget || root.val == k) sofar.isContainsTarget = true;
+
+        //update minLeaf, minRootToLeaf
+        if(l == null && r == null){
+            sofar.minLeaf = root.val;
+
+        } else if(l == null){
+            sofar.minLeaf = r.minLeaf;
+            sofar.minRootToLeaf = r.minRootToLeaf + 1;
+        } else if(r == null){
+            sofar.minLeaf = l.minLeaf;
+            sofar.minRootToLeaf = l.minRootToLeaf + 1;
+        } else{
+            sofar.minLeaf = l.minRootToLeaf < r.minRootToLeaf ? l.minLeaf : r.minLeaf;
+            sofar.minRootToLeaf = l.minRootToLeaf < r.minRootToLeaf ? l.minRootToLeaf + 1 : r.minRootToLeaf + 1;
+        }
+        //update minRootToTarget
+        if(l != null && l.isContainsTarget){
+            sofar.minRootToTarget = l.minRootToTarget + 1;
+        }
+        if(r != null && r.isContainsTarget){
+            sofar.minRootToTarget = r.minRootToTarget + 1;
+        }
+        //update global closest
+        if(root.val == k){
+            closestDist = sofar.minRootToLeaf;
+            closestLeaf = sofar.minLeaf;
+        }
+
+        if(l != null && r != null && l.isContainsTarget){
+            int rightLeafToTarget = r.minRootToLeaf + sofar.minRootToTarget;
+            if(rightLeafToTarget < closestDist){
+                closestDist = rightLeafToTarget;
+                closestLeaf = r.minLeaf;
+            }
+        }
+
+        if(l != null && r != null && r.isContainsTarget){
+            int leftLeafToTarget = l.minRootToLeaf + sofar.minRootToTarget;
+            if(leftLeafToTarget < closestDist){
+                closestDist = leftLeafToTarget;
+                closestLeaf = l.minLeaf;
+            }
+        }
+        return sofar;
+    }
+}
