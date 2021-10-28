@@ -1,0 +1,59 @@
+class Solution {
+    public long getTotalImbalance(int[] weight) {//primitive
+        //corner cse
+        if(weight == null || weight.length <= 1) return 0;
+        long sum = 0;
+        int len -weight.length;
+        int[][] dpMax = new int[len][len];//dp[i][j] = max integer in the range between i and j
+        int[][] dpMin = new int[len][len];
+        for(int i = )
+        for(int i = 0; i < weight.length - 1; i++){
+            for(int j = i + 1; j < weight.length - 1; j++){
+                sum += Math.abs(weight[j] - weight[i]);
+            }
+        }
+        return sum;
+    }
+}
+
+    public long getSumOfDegreeOfFreedom(int[] weights) {
+        //corner case
+
+        int n = nums.length;
+
+        int[][] dp = new int[n][n];
+        for(int i = 0; i < n; i++)
+            Arrays.fill(dp[i], -1);
+        return getSumOfDegreeOfFreedomHelper(nums, dp, 0, n-1);
+    }
+
+    private static int getSumOfDegreeOfFreedomHelper(int[] nums, int[][] dp, int i, int j) {
+        if(i == j)
+            return 0;
+        if(dp[i][j] != -1) return dp[i][j];
+        int min = getMin(nums, i, j);
+        int max = getMax(nums, i, j);
+        int ans = max - min;
+        for(int x = i+1; x < j; x++) {
+            ans = Math.max(ans, getSumOfDegreeOfFreedomHelper(nums, dp, i, x) + getSumOfDegreeOfFreedomHelper(nums, dp, x+1, j));
+        }
+
+        dp[i][j] = ans;
+        return ans;
+    }
+
+    private static int getMin(int[] arr, int i, int j) {
+        int ans = arr[i];
+        for(int x = i+1; x <= j; x++)
+            ans = Math.min(ans, arr[x]);
+
+        return ans;
+    }
+
+    private static int getMax(int[] arr, int i, int j) {
+        int ans = arr[i];
+        for(int x = i+1; x <= j; x++)
+            ans = Math.max(ans, arr[x]);
+
+        return ans;
+    }

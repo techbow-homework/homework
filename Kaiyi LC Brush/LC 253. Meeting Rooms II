@@ -1,0 +1,19 @@
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        //corner case
+        if(intervals == null || intervals.length == 0) return 0;
+        Arrays.sort(intervals, (a,b)-> a[0] - b[0]);
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);//sorted by the end time of the meeting ascending
+        for(int[] interval : intervals){
+            if(pq.isEmpty()){
+                pq.offer(interval);
+                continue;
+            }
+            else if(interval[0] >=pq.peek()[1]){
+                pq.poll();
+            }
+            pq.offer(interval);
+        }
+        return pq.size();
+    }
+}

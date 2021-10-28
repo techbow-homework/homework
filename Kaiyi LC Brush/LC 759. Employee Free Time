@@ -1,0 +1,39 @@
+/*
+// Definition for an Interval.
+class Interval {
+    public int start;
+    public int end;
+
+    public Interval() {}
+
+    public Interval(int _start, int _end) {
+        start = _start;
+        end = _end;
+    }
+};
+*/
+
+class Solution {
+    public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
+        List<Interval> res = new ArrayList<>();
+        //CORNER CASE
+        if(schedule == null || schedule.size() <= 1) return res;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> schedule.get(a[0]).get(a[1]).start - schedule.get(b[0]).get(b[1]).start);//int[a, b] is essentially the two index to indentify an Interval in the schedule
+        for(int i = 0; i < schedule.size(); i++){
+            pq.offer(new int[]{i, 0});
+        }
+        int preEnd = schedule.get(pq.peek()[0]).get(pq.peek()[1]).end;
+        while(!pq.isEmpty()){
+            int[] curr = pq.poll();
+            Interval currInterval = schedule.get(curr[0]).get(curr[1]);
+            if(currInterval.start > preEnd){
+                res.add(new Interval(preEnd, currInterval.start));
+            }
+            preEnd = Math.max(preEnd, currInterval.end);
+            if(schedule.get(curr[0]).size() > curr[1] + 1){
+                pq.offer(new int[]{curr[0], curr[1]+1});
+            }
+        }
+        return res;
+    }
+}
