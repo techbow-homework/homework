@@ -1,0 +1,23 @@
+//x/mid because mid * mid may larger than Integer.MAX_VALUE
+class Solution {
+    public int mySqrt(int x) {
+        if(x < 0){return -1;}
+        if(x < 1){return 0;}
+        if(x < 4){return 1;}
+        int begin = 1;
+        int end = Integer.MAX_VALUE;
+        while (begin <= end) {
+            int mid = begin + (end - begin)/2;
+            if(mid == x/mid) {
+                return mid;
+            }
+            else if(mid > x/mid){
+                end = mid - 1;
+            }
+            else{
+                begin = mid + 1;
+            }
+        }
+        return end;
+    }
+}
