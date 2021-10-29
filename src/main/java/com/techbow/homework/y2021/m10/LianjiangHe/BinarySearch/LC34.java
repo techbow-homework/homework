@@ -1,7 +1,7 @@
 package com.techbow.homework.y2021.m10.LianjiangHe.BinarySearch;
 //题目要求时间复杂度是O(log n),如果只用一次二分查找,那么最差情况所有的元素全部相等,往旁边traverse也会是线性的时间
 //所以时间复杂度为n不能遍历.在寻找相同的数字边界的时候也要用二分查找
-public class LC278 {
+public class LC34 {
     //第一个自己做没用GitHub答案 Success 时间复杂度达标的题目,可喜可贺!
     class Solution {
         //if target found
