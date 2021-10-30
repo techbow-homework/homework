@@ -3,7 +3,6 @@ package com.techbow.homework.y2021.m10.ryanxu.LC_188;
 public class LC_188v2 {
     public int maxProfit(int k, int[] prices) {
 
-        // TODO
         if (k <= 0 || prices == null || prices.length == 0) {
             return 0;
         }
