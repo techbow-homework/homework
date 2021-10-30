@@ -124,7 +124,6 @@ class LC_218 {
             int x = point.get(0);
             int y = point.get(1);
             p++;
-
             // update output
             // if there is a skyline change
             if (currY != y) {
