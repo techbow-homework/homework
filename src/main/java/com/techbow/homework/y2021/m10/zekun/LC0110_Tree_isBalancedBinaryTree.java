@@ -1,4 +1,4 @@
-package LC;
+package com.techbow.homework.y2021.m10.zekun;
 
 public class LC0110_Tree_isBalancedBinaryTree {
     public boolean isBalanced(TreeNode root) {
