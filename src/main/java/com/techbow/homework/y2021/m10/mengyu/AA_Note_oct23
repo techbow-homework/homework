@@ -65,7 +65,7 @@ E: 有多少边 对应 convert --》 O(N*k)
 
 SPACE COMPLEXITY: O(N)
 
-LC??? WordLadder II
+LC126 WordLadder II
 同时记录点和边 using HashMap
 
 possible status:
@@ -78,10 +78,10 @@ public List<List<String>> WLII (String start, String end, HashSet<String> dict) 
     queue.offer(start);
     dict.remove(start);
     boolean isOver = false;
-    HashMap<String, List<String>> graph = new HashMap<>();
-    while(!queue.isEmpty()){
-        size = queue.size();
-        HashSet<String> thisLevelVisited = ...;
+    HashMap<String, List<String>> graph = new HashMap<>();//记录边和点 <------------------- \
+    while(!queue.isEmpty()){                                                              |
+        size = queue.size();                                                              |
+        HashSet<String> thisLevelVisited = ...;// 记录当前层刚被visited的elements。需要另一个HashMap来记录overallVisited
         while (size-- > 0) {
             cur = queue.poll();
             List<String> nexts = convert(cur);
@@ -89,10 +89,10 @@ public List<List<String>> WLII (String start, String end, HashSet<String> dict) 
                 if (next.equals(end)){
                     isOver = true;
                 }
-                if (!dict.contains(cur)) {
+                if (!dict.contains(cur)) {//previously visited
                     continue;
                 }
-                if (!thisLevelVisited.add(cur)) { //visited
+                if (!thisLevelVisited.add(cur)) { //visited mark edge
                     List<String> toV = graph.getOrDefault(cur, new ArrayList<>());
                     toV.add(next);
                     graph.put(cur, toV);
