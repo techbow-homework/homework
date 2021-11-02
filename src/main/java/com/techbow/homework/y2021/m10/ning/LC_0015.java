@@ -41,7 +41,7 @@ public class LC_0015 {
         }
     }
 
-    // S2: hashmap
+    // S2: hashset
     // time: O(n^2)
     // space: O(n)
     public List<List<Integer>> threeSum(int[] nums) {
