@@ -5,6 +5,7 @@ import com.techbow.homework.y2021.m09.mengyu.TreeNode;
 import java.util.ArrayList;
 
 public class LC98ValidBST {
+    /*
     public boolean isValidBST(TreeNode root) {
         ArrayList<Integer> list = new ArrayList<>();
         inOrderTraverse(root, list);
@@ -21,5 +22,15 @@ public class LC98ValidBST {
         list.add(root.val);
         inOrderTraverse(root.right, list);
         return list;
+    }
+     */
+
+    //S2 recursion from top to bottom
+    private boolean isBST(TreeNode root, int lowerBond, int upperBond) {
+        if (root == null) return true;
+        if (root.val >= upperBond || root.val <= lowerBond) {
+            return false;
+        }
+        return isBST(root.left, lowerBond, root.val) && isBST(root.right, root.val, upperBond);
     }
 }
