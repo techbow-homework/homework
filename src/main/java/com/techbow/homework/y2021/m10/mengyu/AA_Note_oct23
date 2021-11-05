@@ -1,0 +1,114 @@
+LC127 word ladder
+hit -> ... -> cog
+Dictionary {hot, dot, lot, dot, log, cog}
+
+given dictionary -- use hashmap/set
+                 -- de-duplicate 没重复
+                 -- size 很大
+                 --
+bfs 最短距离，第一次见到是最短
+模版：
+start point
+分叉条件 》符合transform条件
+visited 》避免同一个元素重复进queue， 分析是不是graph
+
+public int bestTransform (String start, String end, HashSet<String> dict) {
+    //corner cases
+    Queue<String> queue = new LinkedList<>();
+    queue.offer(start);
+    dict.remove(start); //mark visited
+    int minLength = 0; //TODO: change
+
+    while(!queue.isEmpty()) {
+        //layer
+        int size = queue.size();
+        while (size-- > 0) { // v.s for loop, cleaner
+            String cur = queue.poll();
+            List<String> nexts = convert(cur);
+            for (String next : nexts) {
+                if（next.equals(end)） {
+                    return minLength;
+                }
+                if (dict.remove(next)) { //will return true if dict has the word, false if not.
+                    queue.offer(next);
+                }
+            }
+        }
+        minLength++;
+    }
+    throw new RuntimeException("Should never happend!");
+    //return -1;
+}
+
+private List<String> convert (String str) {
+    //不能直接调整str， inmmutable,
+    char[] cc = str.toCharArray();
+    List<String> res = new ArrayList<>();
+    for(int i = 0; i < cc.length; i++) {
+        char cur = cc[i];
+        for (char ch = 'a'; ch <= 'z'; ch++) { //ASCII char 256 --> 256 numbers
+            cc[i] = ch;
+            if (cur != ch) {
+            res.add(String.valueOf(cc));
+            }
+        }
+        cc[i] = cur;
+    }
+    return res;
+}
+
+TIME COMPLEXITY:  O(V+E)
+
+dict size = N
+V = O(N) all the words in the dict
+E: 有多少边 对应 convert --》 O(N*k)
+
+SPACE COMPLEXITY: O(N)
+
+LC126 WordLadder II
+同时记录点和边 using HashMap
+
+possible status:
+unvisited -> mark edge, offer queue, mark visited
+visited & same level -> mark edge
+visited & prev lever -> do nothing
+
+public List<List<String>> WLII (String start, String end, HashSet<String> dict) {
+    Queue<String> queue = ..
+    queue.offer(start);
+    dict.remove(start);
+    boolean isOver = false;
+    HashMap<String, List<String>> graph = new HashMap<>();//记录边和点 <------------------- \
+    while(!queue.isEmpty()){                                                              |
+        size = queue.size();                                                              |
+        HashSet<String> thisLevelVisited = ...;// 记录当前层刚被visited的elements。需要另一个HashMap来记录overallVisited
+        while (size-- > 0) {
+            cur = queue.poll();
+            List<String> nexts = convert(cur);
+            for (next : nexts) {
+                if (next.equals(end)){
+                    isOver = true;
+                }
+                if (!dict.contains(cur)) {//previously visited
+                    continue;
+                }
+                if (!thisLevelVisited.add(cur)) { //visited mark edge
+                    List<String> toV = graph.getOrDefault(cur, new ArrayList<>());
+                    toV.add(next);
+                    graph.put(cur, toV);
+                } else { //not visited
+                    queue.offer(next);
+                    List<String> toV = graph.getOrDefault (cur, new ArrayList<>());
+                    toV.add(next);
+                    graph.put(cur, toV);
+                }
+            }
+        }
+        dict.removeAll(thisLevelVisited);
+        if (isOver) {
+            //recover Path
+        }
+    }
+    throw new Exception("No path exists")
+
+}

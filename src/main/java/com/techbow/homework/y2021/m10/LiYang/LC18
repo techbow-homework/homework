@@ -1,0 +1,38 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return null;
+        List<List<Integer>> res = new LinkedList<>();
+        Arrays.sort(nums);
+        for(int i = 0; i <= nums.length - 4; i++){
+            if(i != 0 && nums[i] == nums[i -1]) continue;
+            for(int j = i + 1; j <= nums.length - 3; j++){
+                if(j != i + 1 && nums[j] == nums[j - 1]) continue;
+                List<List<Integer>> sofar = twoSum(nums, target - nums[i] - nums[j], j + 1, nums.length - 1);
+                if(sofar.size() != 0){
+                    for(List<Integer> temp : sofar){
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        res.add(temp);
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    private List<List<Integer>> twoSum(int[] nums, int target, int s, int e){
+        List<List<Integer>> res = new LinkedList<>();
+        Set<Integer> set = new HashSet<>();
+        for(int i = s; i <= e; i++){
+            if(!res.isEmpty() && res.get(res.size() - 1).get(0) == nums[i]) continue;
+            int newT = target - nums[i];
+            if(set.contains(newT)){
+                List<Integer> sofar = new LinkedList<>();
+                sofar.add(nums[i]);
+                sofar.add(newT);
+                res.add(sofar);
+            }
+            set.add(nums[i]);
+        }
+        return res;
+    }
+}

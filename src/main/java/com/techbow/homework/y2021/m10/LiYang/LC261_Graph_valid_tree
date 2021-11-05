@@ -1,0 +1,41 @@
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        if(edges == null || n < 0 || edges.length >= n) return false;
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int i = 0; i < edges.length; i++){
+            if(!graph.containsKey(edges[i][0])){
+                graph.put(edges[i][0], new HashSet<Integer>());
+            }
+            graph.get(edges[i][0]).add(edges[i][1]);
+            if(!graph.containsKey(edges[i][1])){
+                graph.put(edges[i][1], new HashSet<Integer>());
+            }
+            graph.get(edges[i][1]).add(edges[i][0]);
+        }
+        Set<Integer> seen = new HashSet<>();
+        if(isCycled(0, graph, new HashMap<Integer, Integer>(), seen)){
+            return false;
+        }
+        if(seen.size() != n){
+            return false;
+        }
+        return true;
+    }
+    private boolean isCycled(int curr, Map<Integer, Set<Integer>> graph, Map<Integer, Integer> status, Set<Integer> seen){
+        if(status.containsKey(curr) && status.get(curr) == 1) return true;
+        if(status.containsKey(curr) && status.get(curr) == 2) return false;
+        status.put(curr, 1);
+        Set<Integer> siblings = graph.get(curr);
+        if(siblings != null){
+            for(int next : siblings){
+                graph.get(next).remove(curr);
+                if(isCycled(next, graph, status, seen)){
+                    return true;
+                }
+            }
+        }
+        status.put(curr, 2);
+        seen.add(curr);
+        return false;
+    }
+}

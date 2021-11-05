@@ -1,0 +1,80 @@
+//S1:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] res = new int[]{-1,-1};
+
+        if (nums == null || nums.length == 0) {
+            return res;
+        }
+
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] >= target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        if(left >= 0 && left < nums.length && nums[left] == target) {
+            res[0] = left;
+        }
+
+        left = 0;
+        right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] > target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        if(right >= 0 && right < nums.length && nums[right] == target) {
+            res[1] = right;
+        }
+        return res;
+    }
+}
+
+//S2:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        if(nums == null || nums.length == 0){
+            int[] res = {-1,-1};
+            return res;
+        }
+        int begin = 0;
+        int end = nums.length - 1;
+        int targetindex = 0;
+        while(begin <= end){
+            int mid = begin + (end - begin)/2;
+            if(nums[mid] == target){
+                targetindex = mid;
+                break;
+            }
+            if(nums[mid] < target){
+                begin = mid + 1;
+            }
+            else if(nums[mid] > target){
+                end = mid - 1;
+            }
+        }
+        if(nums[targetindex] != target){
+            int[] res = {-1,-1};
+            return res;
+        }
+        int resl = targetindex - 1;
+        int resr = targetindex + 1;
+        while(resl >= 0 && nums[resl] == target){
+            resl--;
+        }
+        while(resr < nums.length && nums[resr] == target){
+            resr++;
+        }
+        int[] res = {resl+1,resr-1};
+        return res;
+    }
+}

@@ -1,0 +1,29 @@
+//dp[j] >= nums[i]此处必须>=
+//例子:[4,10,4,3,8,9], 如果是>,subsequence会变成[4,4,8,9]，错误因为是>所以10被替换。
+//应为：[4,8,9]
+
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length == 0){
+            return -1;
+        }
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int dpi = 1;
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] > dp[dpi - 1]){
+                dp[dpi] = nums[i];
+                dpi++;
+            }
+            else {
+                for (int j = 0; j < dpi; j++) {
+                    if (dp[j] >= nums[i]) {
+                        dp[j] = nums[i];
+                        break;
+                    }
+                }
+            }
+        }
+        return dpi;
+    }
+}
