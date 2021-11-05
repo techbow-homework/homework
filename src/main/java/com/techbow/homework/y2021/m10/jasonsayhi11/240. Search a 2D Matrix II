@@ -1,0 +1,23 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0){
+            return false;
+        }
+        int rowi = matrix.length - 1;
+        int coli = 0;
+
+        while (rowi >= 0 && rowi < matrix.length && coli >= 0 && coli < matrix[0].length) {
+            if(matrix[rowi][coli] == target) {
+                return true;
+            }
+            else if (matrix[rowi][coli] > target) {
+                rowi--;
+            }
+            else{
+                coli++;
+            }
+        }
+
+        return false;
+    }
+}

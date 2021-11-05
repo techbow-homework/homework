@@ -1,0 +1,37 @@
+//注意重写Comparator时：
+//if(a1[0] == a2[0]) return a2[1] - a1[1];
+//因为当信封长度相等时，已经不能套信封了。所以需要倒序排列宽度让找Longest Increasing Subsequence
+//的过程中不会把长度相等的信封算入可以嵌套的信封数量。
+class Solution {
+    public int maxEnvelopes(int[][] envelopes) {
+        Arrays.sort(envelopes, new Comparator<int[]>(){
+            public int compare(int[] a1, int[] a2) {
+                if(a1[0] == a2[0]){
+                    return a2[1] - a1[1];
+                }
+                return a1[0] - a2[0];
+            }
+        });
+
+        int[] dp = new int[envelopes.length];
+        dp[0] = envelopes[0][1];
+        int dpi = 1;
+
+        for(int i = 1; i < envelopes.length; i++){
+            if(envelopes[i][1] > dp[dpi - 1]){
+                dp[dpi] = envelopes[i][1];
+                dpi++;
+            }
+            else{
+                for(int j = 0; j < dpi; j++){
+                    if(dp[j] >= envelopes[i][1]){
+                        dp[j] = envelopes[i][1];
+                        break;
+                    }
+                }
+            }
+        }
+
+        return dpi;
+    }
+}

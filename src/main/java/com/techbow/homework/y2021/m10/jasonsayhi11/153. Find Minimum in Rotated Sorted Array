@@ -1,0 +1,34 @@
+//S1:
+public class Solution {
+    public int findMin(int[] nums) {
+        int left = 0, right = nums.length - 1, res =  Integer.MAX_VALUE;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[left] <= nums[mid]) {
+                res = Math.min(res,nums[left]);
+                left = mid + 1;
+            } else {
+                res = Math.min(res,nums[mid]);
+                right = mid - 1;
+            }
+        }
+        return res;
+    }
+}
+//S2:
+class Solution {
+    public int findMin(int[] nums) {
+        if(nums == null || nums.length ==0) return -1;
+        int left = 0;
+        int right = nums.length-1;
+        while(left + 1 < right){
+            int mid = left + (right-left)/2;
+            if(nums[mid] > nums[right]){
+                left = mid;
+            }else{
+                right = mid;
+            }
+        }
+        return nums[left] < nums[right] ? nums[left] : nums[right];
+    }
+}

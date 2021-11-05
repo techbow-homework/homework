@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-package com.techbow.homework.y2021.m09.Jacob;
+
+//package com.techbow.homework.y2021.m09.Jacob;
 
 import java.io.OptionalDataException;
 
@@ -17,10 +17,10 @@ public class LC_746 {
 }
 //Homework
 
-=======
-package com.techbow.homework.y2021.m09.Jacob;
 
-import java.io.OptionalDataException;
+
+
+
 
 public class LC_746 {
     public int minCostClimbingStairs(int[] cost)  {
@@ -39,5 +39,3 @@ public class LC_746 {
     }
 }
 //Homework
-
->>>>>>> a1e7104c76f408e735a7c87017ab95e8de29924f

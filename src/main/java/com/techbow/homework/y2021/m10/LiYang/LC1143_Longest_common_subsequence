@@ -1,0 +1,24 @@
+class Solution {
+    public int longestCommonSubsequence(String text1, String text2) {
+        //c.c
+        if(text1 == null || text2 == null || text1.length() == 0 || text2.length() == 0) return -1;
+        Integer[][] memo = new Integer[text1.length()][text2.length()];
+        return dfs(text1, 0, text2, 0, memo);
+    }
+
+    private int dfs(String text1, int index1, String text2, int index2, Integer[][] memo){
+        if(index1 == text1.length() || index2 == text2.length()){
+            return 0;
+        }
+        if(memo[index1][index2] != null) {
+            return memo[index1][index2];
+        }
+        int option1 = dfs(text1, index1 + 1, text2, index2, memo);
+        int option2 = dfs(text1, index1, text2, index2 + 1, memo);
+        int option3 = dfs(text1, index1 + 1, text2, index2 + 1, memo);
+        if(text1.charAt(index1) == text2.charAt(index2)){
+            option3++;
+        }
+        return memo[index1][index2] = Math.max(option1, Math.max(option2, option3));
+    }
+}
