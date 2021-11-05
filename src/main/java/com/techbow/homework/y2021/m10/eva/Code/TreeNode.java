@@ -1,6 +1,4 @@
-package com.techbow.homework.y2021.m10.eva;
-
-import com.sun.source.tree.Tree;
+package com.techbow.homework.y2021.m10.eva.Code;
 
 public class TreeNode {
     public int val;
@@ -15,5 +13,4 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
-
 }

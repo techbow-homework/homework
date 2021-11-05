@@ -1,0 +1,41 @@
+//用二分查找。查找range:[nums中的最大值，nums的总和]
+//isok功能: 找出是否可能加到这个target。
+
+class Solution {
+    public int splitArray(int[] nums, int m) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+
+        for (int num : nums) {
+            max = Math.max(max, num);
+            sum += num;
+        }
+
+        int left = max;
+        int right = sum;
+
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            if(isok(mid, nums, m)){
+                right = mid - 1;
+            }
+            else{
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+    private boolean isok(int target, int[] nums, int m) {
+        int count = 1;
+        int cursum = 0;
+        for (int num : nums) {
+            cursum += num;
+            if (cursum > target) {
+                cursum = num;
+                count++;
+                if(count > m) return false;
+            }
+        }
+        return true;
+    }
+}

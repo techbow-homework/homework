@@ -25,7 +25,7 @@ public class LC752 {
                 while(size -- > 0){
                     char[] cur = queue.poll();
 
-                    List<char[]> nexts = convert(cur, deadSet, visited);
+                    List<char[]> nexts = (cur, deadSet, visited);
                     for(char[] next: nexts){
                         String nextString = String.valueOf(next);
                         if(nextString.equals(target)){

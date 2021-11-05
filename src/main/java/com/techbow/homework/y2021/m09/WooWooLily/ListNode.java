@@ -13,4 +13,8 @@ public class ListNode {
         next = null;
     }
 
+    public ListNode() {
+        this(-1);
+    }
+
 }
