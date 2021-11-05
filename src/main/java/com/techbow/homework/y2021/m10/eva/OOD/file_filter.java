@@ -7,6 +7,6 @@ file name: public List<File> filterByName (List<file>files, String fileNames){}
 
  */
 
-abstract class file_filter {
-    abstract boolean filter(File file, fil)
-}
+//abstract class file_filter {
+ //   abstract boolean filter(File file, fil)
+//}
