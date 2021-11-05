@@ -134,11 +134,11 @@ public class BFS_Related {
                     }
                 } else {
                     cur = deque.pollLast();
-                    if (cur.left != null) {
-                        deque.offerFirst(cur.left);
-                    }
                     if (cur.right != null) {
                         deque.offerFirst(cur.right);
+                    }
+                    if (cur.left != null) {
+                        deque.offerFirst(cur.left);
                     }
                 }
                 levelRes.add(cur.val);
