@@ -1,0 +1,76 @@
+class Solution {
+    private static final int[][] DIRECTIONS = {{-1,0},{1,0},{0,-1},{0,1}};
+    public List<Integer> numIslands2(int m, int n, int[][] positions) {
+        //c.c
+        if(positions == null || positions.length == 0 || positions[0] == null || positions[0].length == 0){
+            throw new IllegalArgumentException("bad input");
+        }
+        UnionFind uf = new UnionFind(m * n);
+        List<Integer> res = new LinkedList<>();
+        for(int[] position : positions){
+            int i = position[0];
+            int j = position[1];
+            int index = i * n + j;
+            if(!uf.isIsland(index)){
+                uf.addIsland(index);
+                for(int[] neighbor : DIRECTIONS){
+                    int ii = i + neighbor[0];
+                    int jj = j + neighbor[1];
+                    int indexOfNeighbor = ii * n + jj;
+                    if(ii >= 0 && ii < m && jj >= 0 && jj < n && uf.isIsland(indexOfNeighbor)){
+                        if(!uf.find(index, indexOfNeighbor)) {
+                            uf.union(index, indexOfNeighbor);
+                        }
+                    }
+                }
+            }
+
+            res.add(uf.numOfIsland);
+        }
+        return res;
+    }
+}
+class UnionFind {
+    int[] parents;
+    int[] sizes;
+    int numOfIsland;
+
+    public UnionFind(int size){
+        parents = new int[size];
+        sizes = new int[size];
+        numOfIsland = 0;
+    }
+
+    private int findRoot(int a){
+        int curr = a;
+        while(parents[curr] != curr){
+            parents[curr] = parents[parents[curr]];
+            curr = parents[curr];
+        }
+        parents[a] = curr;
+        return curr;
+    }
+    public boolean find(int a, int b){
+        return findRoot(a) == findRoot(b);
+    }
+    public void union(int a, int b){
+        int rootA = findRoot(a);
+        int rootB = findRoot(b);
+        if(sizes[rootA] < sizes[rootB]){
+            parents[rootA] = rootB;
+            sizes[rootB] += sizes[rootA];
+        } else {
+            parents[rootB] = rootA;
+            sizes[rootA] += sizes[rootB];
+        }
+        numOfIsland--;
+    }
+    public void addIsland(int a){
+        parents[a] = a;
+        sizes[a] = 1;
+        numOfIsland++;
+    }
+    public boolean isIsland(int a){
+        return sizes[a] != 0;
+    }
+}
