@@ -46,6 +46,7 @@ class Solution {
         }
     }
 
+
     public int find(int i){
         if(parent[i] != i) return find(parent[i]);
         return i;
