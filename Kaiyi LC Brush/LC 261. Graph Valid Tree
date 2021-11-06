@@ -1,0 +1,53 @@
+class Solution {
+    //need a rank[]
+    int[] parent;
+    int[] rank;
+    public boolean validTree(int n, int[][] edges) {
+        //check if number of edges is the same as n - 1
+        if(edges == null || edges.length != n - 1) return false;
+        //do union find here to check if all dots are connected
+        parent = new int[n];
+        rank = new int[n];
+        for(int i = 0 ; i < n; i++){parent[i] = i;}
+        for(int[] edge: edges){
+            int x = edge[0];
+            int y = edge[1];
+            if(parent[x] != parent[y]){
+                union( x, y);
+            }
+            /*System.out.print(parent[x]);
+            System.out.print(parent[y]);
+            System.out.print(find(x));
+            System.out.print(find(y));
+            System.out.println();*/
+        }
+        int target = find(0);
+        for(int i = 1; i < n; i++){
+            if(target != find(i)) return false;
+        }
+        return true;
+    }
+
+    public void union(int x, int y){
+        int xDad = find(x);
+        int yDad = find(y);
+
+        if(xDad != yDad){
+            if(rank[xDad] > rank[yDad]){
+                parent[y] = x;
+                rank[xDad]++;
+            }else if(rank[xDad] < rank[yDad]){
+                parent[x] = y;
+                rank[yDad]++;
+            }else{
+                parent[y] = x;
+                rank[xDad]++;
+            }
+        }
+    }
+
+    public int find(int i){
+        if(parent[i] != i) return find(parent[i]);
+        return i;
+    }
+}

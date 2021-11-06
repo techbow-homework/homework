@@ -1,0 +1,32 @@
+class TicTacToe {
+    int[] scoreBoard;
+    int playerTwoScore;
+    int playerOneScore;
+    int n;
+
+    public TicTacToe(int n) {//player one row col and diagnoal add 1, player two add n + 1, whenever there is a 12 or 3, there is a winner
+        playerOneScore = 1;
+        playerTwoScore = n + 1;
+        scoreBoard = new int[2*n + 2];
+        this.n = n;
+    }
+
+    public int move(int row, int col, int player) {
+        int score = player == 1? playerOneScore: playerTwoScore;
+        scoreBoard[row] += score;
+        scoreBoard[col + n] += score;
+        if(row == col) scoreBoard[2*n] += score;
+        if(row + col == n - 1) scoreBoard[2*n + 1] += score;
+        int target = score*n;
+        if(scoreBoard[row] == target || scoreBoard[col + n] == target || scoreBoard[2*n] == target || scoreBoard[2*n + 1] == target){
+            return player;
+        }
+        return 0;
+    }
+}
+
+/**
+ * Your TicTacToe object will be instantiated and called as such:
+ * TicTacToe obj = new TicTacToe(n);
+ * int param_1 = obj.move(row,col,player);
+ */
