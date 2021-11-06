@@ -21,4 +21,4 @@ private ArrayList<Integer> mergeSort(ArrayList<> array, int left, int right){
 
 private ArrayList<Integer> merge(ArrayList<Integer> left,ArrayList<Integer> right){
 
-        }
+}
