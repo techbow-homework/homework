@@ -1,8 +1,9 @@
-package com.techbow.homework.y2021.m10.ryanxu.LC_188;
+package com.techbow.homework.y2021.m10.ryanxu.LC_188.v2;
 
 public class LC_188v2 {
     public int maxProfit(int k, int[] prices) {
 
+        // TODO
         if (k <= 0 || prices == null || prices.length == 0) {
             return 0;
         }
@@ -27,8 +28,6 @@ public class LC_188v2 {
         }
 
         int[] val = maxProfitWithFee(prices, start);
-//        return val[0] + start * val[1];
-//        System.out.println();
         return val[0] + start * k;
     }
 
@@ -69,6 +68,5 @@ public class LC_188v2 {
         int[] prices = {3,3,5,0,0,3,1,4};
         int k = 2;
         System.out.println(lc_188V2.maxProfit(k, prices));
-//        System.out.println(lc_188V2.maxProfitWithFee(prices, 2)[0]);
     }
 }
