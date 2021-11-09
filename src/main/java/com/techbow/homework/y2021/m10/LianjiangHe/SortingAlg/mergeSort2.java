@@ -23,13 +23,8 @@ public class mergeSort2 {
         }
 
         int sortSize = end - start + 1;
-        int seperate;
-        if (sortSize % 2 == 0) {
-            seperate = start + sortSize / 2 - 1;
-        } else {
-            seperate = start + sortSize / 2;
-        }
 
+        int separate = start + (end-start)/2;
         sortArray(array, start, seperate);
         sortArray(array, seperate + 1, end);
 
