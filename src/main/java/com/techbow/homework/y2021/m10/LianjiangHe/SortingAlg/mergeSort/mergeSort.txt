@@ -1,0 +1,19 @@
+mergesort实现方法:
+1.Divide
+    (1)如果S中有0个或者1个元素,直接返回S;
+    (2)从S中删除所有元素,把它们分别放入2个序列S1和S2中,S1和S2中各包含大约S一半元素,S1包含ceiling(N/2),S2包含floor(N/2)个元素
+2.recursion
+3.method merge不断地从这两个子序列删除最小地元素,并将其添加到输出序列S地末尾,直到这两个序列有一个为空.
+
+pseudo-code implement
+merge(子序列S1,S2,空序列S):
+while (not(SS1.isEmpty() or S2.isEmpty()))do
+    if(S1.first().element() <= S2.first().element())then
+        S.insertLast(S1.remove(S1.first()))
+    else
+        S.insertLast(S2.remove(S2.first()))
+//有一个sub插完了
+while(not S1.isEmpty()) do
+    S.insertLast(S1.remove(S1.first()))
+while(not S2.isEmpty()) do
+    S.insertLast(S2.remove(S2.first()))

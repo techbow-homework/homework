@@ -1,0 +1,14 @@
+quicksort是利用divide and conquer 对序列S排序,将S分解成子序列,然后递归对每一子序列进行排序,跟mergesort分解的条件不同,
+然后通过连接把有序的子序列组合起来.
+1.divide
+    如果S中至少有2个元素(0个或1个无需操作),从中选一个元素pivot.通常,选S中最右边的元素,删除S中的所有元素,
+    并将它们放入三个序列中:
+    L:存储S中小于x的元素
+    E:存储S中等于x的元素(如果S中的元素各不相同,则E只存储pivot)
+    G:存储S中大于x的元素
+
+2.recursion
+    递归对L和G进行排序
+3.merge
+    首先插入L中的元素,然后插入E中的元素,最后插入G中的元素,把元素放回S中
+pseudo-code implement
