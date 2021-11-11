@@ -1,0 +1,111 @@
+class MyListNode {
+    int key;
+    int val;
+    MyListNode pre;
+    MyListNode next;
+
+    public MyListNode(int key, int val) {
+        this.key = key;
+        this.val = val;
+        pre = null;
+        next = null;
+    }
+}
+
+class MyDoubleLinkedList {
+    MyListNode head;
+    MyListNode tail;
+    int size;
+
+    public MyDoubleLinkedList(){
+        head = new MyListNode(0,0);
+        tail = head;
+        size = 0;
+    }
+
+    public void add(MyListNode node){
+        //c.c
+        if(node == null) {
+            throw new IllegalArgumentException();
+        }
+        tail.next = node;
+        node.pre = tail;
+        tail = node;
+        size++;
+    }
+
+    public void moveToTail(MyListNode node) {
+        //c.c
+        if(node == tail){
+            return;
+        } else {
+            node.pre.next = node.next;
+            node.next.pre = node.pre;
+            tail.next = node;
+            node.pre = tail;
+            node.next = null;
+            tail = node;
+
+        }
+
+    }
+
+    public MyListNode removeLeastUsed() {
+        //c.c
+        MyListNode temp = head.next;
+        if(size == 1){
+            head.next = null;
+            temp.pre = null;
+            tail = head;
+        } else {
+            head.next = temp.next;
+            temp.next.pre = head;
+            temp.next = null;
+            temp.pre = null;
+        }
+        size--;
+        return temp;
+    }
+}
+
+class LRUCache {
+    Map<Integer, MyListNode> map;
+    MyDoubleLinkedList list;
+    int cap;
+
+    public LRUCache(int capacity) {
+        //c.c
+        map = new HashMap<>();
+        list = new MyDoubleLinkedList();
+        cap = capacity;
+    }
+
+    public int get(int key) {
+        //c.c
+        if(!map.containsKey(key)) return -1;
+        MyListNode res = map.get(key);
+        list.moveToTail(res);
+        return res.val;
+
+    }
+
+    public void put(int key, int value) {
+        //c.c
+        MyListNode newNode = new MyListNode(key, value);
+        if(!map.containsKey(key) && map.size() < cap){
+            map.put(key, newNode);
+            list.add(newNode);
+
+        } else if(!map.containsKey(key) && map.size() >= cap) {
+            MyListNode removedNode = list.removeLeastUsed();
+            map.remove(removedNode.key);
+            map.put(key, newNode);
+            list.add(newNode);
+            //TODO ADD;
+        } else {
+            MyListNode updateNode = map.get(key);
+            updateNode.val = value;
+            list.moveToTail(updateNode);
+        }
+    }
+}

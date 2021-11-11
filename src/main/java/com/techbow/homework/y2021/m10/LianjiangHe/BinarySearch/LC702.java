@@ -10,7 +10,7 @@ package com.techbow.homework.y2021.m10.LianjiangHe.BinarySearch;
 class Solution {
     public int search(ArrayReader reader, int target) {
         int left = 0;
-        int right = 9999;
+        int right = 9999;//unkonwn right index
         while(left+1<right){
             int mid = left+(right-left)/2;
             if( reader.get(mid)> 10000){

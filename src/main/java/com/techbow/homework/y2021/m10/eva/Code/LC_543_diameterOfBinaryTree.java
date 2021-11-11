@@ -1,7 +1,7 @@
-package com.techbow.homework.y2021.m10.eva;
+package com.techbow.homework.y2021.m10.eva.Code;
 
 
-public class LC_543 {
+public class LC_543_diameterOfBinaryTree {
         int diameter = 0;
         public int diameterOfBinaryTree(TreeNode root) {
             helper(root);
