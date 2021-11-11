@@ -1,0 +1,14 @@
+in this sorting algorithm buckets are created to put elements into them.
+Then we apply some sorting algorithm(insertion sort) to sort the elements in each bucket.
+Finally take out and join them to get sorted array.
+pseudo-code implement
+bucketSort(S):
+    input:关键字位于[0,N-1]区间内的数据项组成的序列S
+    output:按照关键字非降序排列的有序序列S
+    设B是N个序列的数组,每个序列初始为空
+    for S中的每个数据项x do
+        设k是x的关键字
+        从S中删除x,并将它插入到bucket B[k]的末尾
+    for(i=0,i<N,i++) do
+        for 序列B[i]中的每个数据项x do
+            从B[i]中删除x, 并将它插入到S的末尾
