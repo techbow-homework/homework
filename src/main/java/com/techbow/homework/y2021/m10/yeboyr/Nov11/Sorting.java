@@ -45,6 +45,7 @@ class sorting {
         mergeSort(left_arr,mid);
         mergeSort(right_arr,len-mid);
         // Calling the merge method on each subdivision
+
         merge(left_arr,right_arr,arr,mid,len-mid);
     }
 
