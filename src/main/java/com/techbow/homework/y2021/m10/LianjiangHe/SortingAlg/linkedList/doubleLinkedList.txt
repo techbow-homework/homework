@@ -1,0 +1,9 @@
+在链表的位置p后面插入元素e,首先创建一个新结点v存放元素e,并将v链接进表中其位置,然后更新v的两个新近邻的next应用和prev引用
+insertAfter(p,e)
+创建一个新结点v
+v.element = e
+v.prev = p
+v.next = p.next
+(p.next).prev = v
+p.next = v
+return v
