@@ -7,7 +7,7 @@ public class LC_35 {
     // other cases: [ 1 2 2,1, 3,4,5]
 
     public int insertSearch(int[] nums, int target) {
-        if (nums == null || nums.lenght == 0) return 0;
+        if (nums == null || nums.length == 0) return 0;
 
         int left = 0, right = nums.length - 1;
         int mid = 0;
