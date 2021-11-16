@@ -1,0 +1,42 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        if(reader.get(0) > target){
+            return -1;
+        }
+        //define boundaries
+        int left = 0;
+        int right = 1;
+        while(target > reader.get(right)){
+            left = right;
+            right *= 2;
+        }
+        if(reader.get(left) == target) {
+            return left;
+        }
+        if(reader.get(right) == target) {
+            return right;
+        }
+        //binary search
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if (reader.get(mid) == target) {
+                return mid;
+            }
+            if (reader.get(mid) < target) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+}
