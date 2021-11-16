@@ -1,0 +1,34 @@
+//遇到2时，i不++，因为不知道换过来的是1还是0。
+//while i < two，后面都是2说明已经结束，不能再继续换位置了。
+class Solution {
+    public void sortColors(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+        int zero = -1;
+        int i = 0;
+        int two = nums.length;
+
+        while (i < two) {
+            if(nums[i] == 0) {
+                zero++;
+                swap(nums, i, zero);
+                i++;
+            }
+            else if(nums[i] == 1){
+                i++;
+            }
+            else{
+                two--;
+                swap(nums, i, two);
+            }
+        }
+        return;
+    }
+
+    private void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
