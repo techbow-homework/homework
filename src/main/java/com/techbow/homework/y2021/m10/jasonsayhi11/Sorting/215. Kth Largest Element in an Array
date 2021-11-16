@@ -1,0 +1,42 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        return quicksort(nums, 0, nums.length - 1, k);
+    }
+
+    private int quicksort(int[] nums, int begin, int end, int k) {
+        //if(begin > end){return -1;}
+
+        int pi = findP(nums, begin, end);
+        if(pi == nums.length - k){
+            return nums[pi];
+        }
+        if(pi < nums.length - k){
+            return quicksort(nums, pi + 1, end, k);
+        }
+        else{
+            return quicksort(nums, begin, pi - 1, k);
+        }
+    }
+
+    private int findP(int[] nums, int begin, int end) {
+        int pivot = nums[end];
+        int j = begin - 1;
+
+        for (int i = begin; i < nums.length; i++) {
+            if (nums[i] < pivot) {
+                j++;
+                int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+            }
+        }
+        j++;
+        nums[end] = nums[j];
+        nums[j] = pivot;
+        return j;
+    }
+}

@@ -1,0 +1,7 @@
+//first position of target
+//last position of target
+S1: left <= right
+    //找有没有target,没有post processing ,left和right还要+1 -1
+S2: left < right
+S3: left+1 < right
+    //找分界线,left和right把分界线夹在中间

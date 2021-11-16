@@ -1,5 +1,6 @@
 //需要回锅,思路明白了但是自己写出来漏洞百出,首先看长度是不是1,如果不判断,则后面找k会outofboundary,判断之后找k,如果找不到则为sorted array
 //对nums用BinarySearch就行.如果找到k了,则判断第一个数和target比较,如果第一个数比target大则target在[k,n]中,反之[0,k-1]
+//staging server == test server
 class Solution {
     int [] nums;
     int target;

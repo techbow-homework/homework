@@ -1,0 +1,48 @@
+class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        //C.C
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        Map<Integer, Integer> status = new HashMap<>();
+        int[] res = new int[numCourses];
+        int[] index = new int[1];
+        index[0] = numCourses - 1;
+        for(int i = 0; i < prerequisites.length; i++){
+            if(!graph.containsKey(prerequisites[i][1])){
+                graph.put(prerequisites[i][1], new LinkedList<Integer>());
+            }
+            graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        }
+        for(int i = 0; i < numCourses; i++){
+            if(topologicalSort(i, graph, status, res, index)){
+                //int[] emptyRes;
+
+                return new int[0];
+            }
+        }
+        return res;
+
+    }
+    private boolean topologicalSort(int curr, Map<Integer, List<Integer>> graph, Map<Integer, Integer> status, int[] res, int[] index){
+        if(status.containsKey(curr) && status.get(curr) == 1){
+            return true;
+        }
+        if(status.containsKey(curr) && status.get(curr) == 2){
+            return false;
+        }
+        status.put(curr, 1);
+        List<Integer> siblings = graph.get(curr);
+        if(siblings != null){
+            for(int next : siblings){
+                if(topologicalSort(next, graph, status, res, index)){
+                    return true;
+                }
+
+            }
+
+        }
+        status.put(curr, 2);
+        res[index[0]--] = curr;
+        return false;
+
+    }
+}

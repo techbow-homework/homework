@@ -1,0 +1,33 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for(int i = 0; i < prerequisites.length; i++){
+            if(!graph.containsKey(prerequisites[i][1])){
+                graph.put(prerequisites[i][1], new LinkedList<Integer>());
+            }
+            graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        }
+        Map<Integer, Integer> status = new HashMap<>();
+        for(int i = 0; i < numCourses; i++){
+            if(isCycled(i, graph, status)){
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean isCycled(int curr, Map<Integer, List<Integer>> graph, Map<Integer, Integer> status){
+        if(status.containsKey(curr) && status.get(curr) == 1) return true;
+        if(status.containsKey(curr) && status.get(curr) == 2) return false;
+        status.put(curr, 1);
+        if(graph.containsKey(curr)){
+            for(int next : graph.get(curr)){
+                if(isCycled(next, graph, status)){
+                    return true;
+                }
+            }
+        }
+        status.put(curr, 2);
+        return false;
+    }
+}

@@ -51,7 +51,6 @@ public class LC127WordLadder {
         System.out.println(res);
     }
 }
-
 /*
 for bfs is O(V + E) where:
 V = set size = O(N)
