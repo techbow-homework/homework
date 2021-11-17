@@ -49,7 +49,7 @@ public class UnrolledLinkedList {
                 index -= cur.len;
             }else{
                 if(cur.len != 5){
-                    for(int i = cur.len - 1; i > index; i--){
+                    for(int i = cur.len ; i > index; i--){
                         cur.chars[i] = cur.chars[i - 1];
                     }
                     cur.chars[index] = ch;
