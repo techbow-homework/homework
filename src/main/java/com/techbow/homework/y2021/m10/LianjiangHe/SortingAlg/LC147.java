@@ -23,7 +23,7 @@ class Solution {
                                                                 //dummy后的第一个值小于输入Listnode的值
                 prev = prev.next;
             }
-            curr.next = prev.next;
+            curr.next = prev.next;//提取出了curr的除了第一个数
             prev.next = curr;
 
             prev = dummy;
@@ -44,8 +44,7 @@ class Solution {
 *   head: [4]
     dummy: [0]
     prev: [0]
-    curr: [4]
-    next: [2,1,3]
+    curr: [2,1,3]
         *   head: [4]
             dummy: [0,4]
             prev: [0,4]
