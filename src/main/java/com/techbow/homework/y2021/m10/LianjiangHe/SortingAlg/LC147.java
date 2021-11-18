@@ -24,6 +24,7 @@ class Solution {
                 prev = prev.next;
             }
             curr.next = prev.next;//提取出了curr的除了第一个数
+
             prev.next = curr;
 
             prev = dummy;
