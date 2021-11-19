@@ -27,7 +27,7 @@ public class LC_3 {
             char c = str.charAt(right);
             Integer index = map.get(c);
             if (index != null) {
-                left = Math.max(index + 1, left);              //left = index + 1
+                left = Math.max(index + 1, left);              //NO!!left = index + 1
             }
             map.put(c, right);
             count = Math.max(count, right - left + 1);
