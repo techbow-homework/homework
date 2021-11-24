@@ -35,3 +35,4 @@ class Solution {
         return dummy.next;//(2)when we finish sorting the list,return the sorted part
     }
 }
+
