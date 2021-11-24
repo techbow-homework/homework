@@ -49,7 +49,7 @@ public class LC_242 {
                 return false;
             }
         }
-        return true;
+        return map.size() == 0;
     }
     public static void main(String[] args) {
         LC_242 test = new LC_242();
