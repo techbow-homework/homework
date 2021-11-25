@@ -1,5 +1,6 @@
 //redo
-
+//insertion sort works but time limit exceeded
+//turns into merge sort
 class Solution {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null)

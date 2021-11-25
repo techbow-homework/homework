@@ -1,4 +1,4 @@
-/**
+36/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -35,33 +35,4 @@ class Solution {
         return dummy.next;//(2)when we finish sorting the list,return the sorted part
     }
 }
-/*
-* head = [4,2,1,3]
-* dummy = [0]
-* prev = [0]
-* curr = [4,2,1,3]
-* next = [2,1,3]
-* prev.next = null
-*   head: [4]
-    dummy: [0]
-    prev: [0]
-    curr: [2,1,3]
-        *   head: [4]
-            dummy: [0,4]
-            prev: [0,4]
-            curr: [2,1,3]
-                    *   head: [4]
-                        dummy: [0,2,4]
-                        prev: [0,2,4]
-                        curr: [1,3]
-                        *   head: [4]
-                            dummy: [0,1,2,4]
-                            prev: [0,1,2,4]
-                            curr: [3]
-                                *   head: [4]
-                                    dummy: [0,1,2,3,4]
-                                    prev: [0,1,2,3,4]
-                                    curr: null
-                                    *
 
-* */
