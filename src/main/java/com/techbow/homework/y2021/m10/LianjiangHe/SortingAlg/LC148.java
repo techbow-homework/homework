@@ -2,6 +2,7 @@
 //insertion sort works but time limit exceeded
 //turns into merge sort
 //time complexity O(nlogn)
+//
 class Solution {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null)
