@@ -1,3 +1,4 @@
+// time complexity O(Nlogk) Space complexity O(k)
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         // init heap 'the smallest element first'
