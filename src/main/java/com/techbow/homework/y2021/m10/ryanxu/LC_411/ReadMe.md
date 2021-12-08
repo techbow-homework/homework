@@ -1,0 +1,10 @@
+### 解题思路：
+要求出target最短abbreviation，并且这个abbreviation不能是dictionary中单词的abbreviation，
+我们需要遍历target所有的abbreviation，如果直接用String来表示，target的长度为m，用dfs来完成
+计算时间复杂度为O(2^m)。而m <= 21，所以可以考虑用bitmask来表示所有的状态，这样省去了stack的消耗
+，即用1表示留下的字符，用0表示省略的字符。并且可以通过bitmask计算得到abbreviation的长度，在将这些
+bitmask按照长度从小到大进行排序。同时通过观察发现，不管单词如何省略，最终得到的abbreviation
+总可以表示出原始单词的长度，所以我们可以先将dictionary中长度不等于target的单词去除。最终check 
+target和每一个bitmask所组成的abbreviation 设为targetAbbr，与该bitmask和dictionary中word所
+形成的abbreviation（设为wordAbbr）进行比较，如果targetAbbr与所有的wordAbbr都不同，那么
+targetAbbr即为所求。
