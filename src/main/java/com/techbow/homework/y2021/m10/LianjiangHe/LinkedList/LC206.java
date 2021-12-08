@@ -5,3 +5,15 @@ public ListNode reverseList(ListNode head) {
         head.next = null;
         return p;
         }
+//option 2
+public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+        ListNode nextTemp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextTemp;
+        }
+        return prev;
+        }
