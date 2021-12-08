@@ -11,5 +11,6 @@ public class ArrayLength {
     public static void main(String[] args) {
         System.out.println(lengthOne);
         System.out.println(lengthTwo);
+
     }
 }
