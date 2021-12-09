@@ -17,3 +17,16 @@ public ListNode reverseList(ListNode head) {
         }
         return prev;
         }
+//step by 2
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode subHead = reverseList(head.next.next);
+        head.next.next = head;
+        ListNode newHead = head.next;
+        head.next = subHead;
+        return newHead;
+    }
+}
