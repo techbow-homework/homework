@@ -30,3 +30,4 @@ class Solution {
         return newHead;
     }
 }
+//step by 3 or k
