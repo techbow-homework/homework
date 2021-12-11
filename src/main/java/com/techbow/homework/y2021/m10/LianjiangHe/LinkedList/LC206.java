@@ -31,3 +31,4 @@ class Solution {
     }
 }
 //step by 3 or k
+//
