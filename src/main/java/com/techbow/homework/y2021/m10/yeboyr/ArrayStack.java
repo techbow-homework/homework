@@ -22,7 +22,7 @@ public class ArrayStack {
             head++;
         }
         return true;
-        //dec10
+        //dec13
     }
 
     public int peek(){
