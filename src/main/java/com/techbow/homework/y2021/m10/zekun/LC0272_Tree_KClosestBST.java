@@ -3,7 +3,7 @@ package com.techbow.homework.y2021.m10.zekun;
 public class LC0272_Tree_KClosestBST {
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
 
-        Stack <TreeNode> stackL = new Stack<>();
+        Stack<TreeNode> stackL = new Stack<>();
         Stack<TreeNode> stackR = new Stack<>();
         TreeNode cur = root;
         while(cur != null){
