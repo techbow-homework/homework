@@ -13,6 +13,7 @@ public class searchMatrix {
         int right = m * n - 1;
         int midIdx, midElement;
 
+
         while (left <= right) {
 
             midIdx = left + (right - left) / 2;
