@@ -3,6 +3,10 @@ package com.techbow.homework.y2021.m10.yeboyr;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+time complexity:O(log(n)+k)
+ */
+
 public class leet658 {
     class Solution {
         public List<Integer> findClosestElements(int[] arr, int k, int x) {
