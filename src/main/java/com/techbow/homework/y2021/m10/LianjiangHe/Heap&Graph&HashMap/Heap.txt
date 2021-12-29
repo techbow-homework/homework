@@ -1,0 +1,11 @@
+Heap在逻辑上是Complete Binary Tree
+    存储上是Array
+    在Java里实现是PriorityQueue
+    O(1)时间access MAX/MIN value
+    O(1) peek
+    O(logn)去offer和pull
+    O(n)time to heapify
+    Parent(x-1)/2 的index 与左右index leftChild 2x+1 rightChild 2x+2
+
+
+
