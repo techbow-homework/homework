@@ -29,3 +29,5 @@ public class leet33 {
         }
     }
 }
+
+//12.30重做一遍 在设定if条件时以确定不会变的index作为参照，cover target会等于index的条件，将过程简略化；
