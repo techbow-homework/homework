@@ -29,5 +29,5 @@ public class leet75 {
 }
 
 /*
-三指针做题，不用两边都动，记得用中间指针check一边再动；
+三指针做题，不用两边都动，记得用中间指针check；左边和中间交换后一起动，中间check，右边动：值交给中间check，再走while loop动；
  */
