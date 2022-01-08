@@ -1,31 +1,35 @@
+/*
+Input: k = 3, n = 9
+Output: [[1,2,6],[1,3,5],[2,3,4]]
+Input: k = 4, n = 1
+Output: []
+* */
+//不重复的遍历树,没有标记,直接往后+1,使之不重复
 class Solution {
-    protected void backtrack(int remain, int k,
-                             LinkedList<Integer> comb, int next_start,
-                             List<List<Integer>> results) {
-
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        LinkedList<Integer> comb = new LinkedList<Integer>();
+        DFS(n, k, comb, 0, res);
+        return res;
+    }
+    public void DFS(int remain,
+                    int k,
+                    LinkedList<Integer> comb,
+                    int next_start,
+                    List<List<Integer>> res){
         if (remain == 0 && comb.size() == k) {
-            // Note: it's important to make a deep copy here,
-            // Otherwise the combination would be reverted in other branch of backtracking.
-            results.add(new ArrayList<Integer>(comb));
+            res.add(new ArrayList<Integer>(comb));
             return;
-        } else if (remain < 0 || comb.size() == k) {
-            // Exceed the scope, no need to explore further.
+        }else if (remain < 0 || comb.size() == k) {
             return;
         }
-
-        // Iterate through the reduced list of candidates.
+        //回溯
         for (int i = next_start; i < 9; ++i) {
             comb.add(i + 1);
-            this.backtrack(remain - i - 1, k, comb, i + 1, results);
+            DFS(remain - (i + 1), k, comb, i + 1, res);
             comb.removeLast();
         }
     }
-
-    public List<List<Integer>> combinationSum3(int k, int n) {
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
-        LinkedList<Integer> comb = new LinkedList<Integer>();
-
-        this.backtrack(n, k, comb, 0, results);
-        return results;
-    }
 }
+
+//
