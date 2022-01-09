@@ -5,7 +5,6 @@
         We can start an opening bracket if we still have one (of n) left to place.
         And we can start a closing bracket if it would not exceed the number of opening brackets.
 */
-
 //选择用什么括号的时候,画下来其实是个树,然后是全遍历情况,所以用DFS
 
 //接着走流程:①怎么选择;②怎么recursion;③怎么回溯
